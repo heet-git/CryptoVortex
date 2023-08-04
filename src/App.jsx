@@ -1,15 +1,27 @@
 import React from "react"
 import Navbar from "./common/Navbar"
-// import { ThemeProvider } from '@mui/material/styles';
-// import Theme from "./common/Navbar";
+import { ThemeProvider, createTheme } from "@mui/material"
 
+const Theme = createTheme({
+typography: {
+    "fontFamily": `'DM Sans', "Roboto", "sans-serif"`,
+    "Color": "black"
+},
+palette: {
+    primary: {
+      main: '#FFF',
+    },
+    text:{
+      primary: '#000'
+    },
+  },
+})
 
 function App() {
   return (
-    <>
-      <Navbar/>
-      <h1>Hello there</h1>
-    </>
+    <ThemeProvider theme={Theme}>
+        <Navbar/>
+    </ThemeProvider>
   )
 }
 

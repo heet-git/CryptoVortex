@@ -1,21 +1,18 @@
-import { createTheme } from "@mui/material"
+// import { createTheme } from "@mui/material"
 
-const Theme = createTheme({
-typography: {
-    "fontFamily": `'DM Sans', "Roboto", "sans-serif"`,
-    "Color": "black"
-},
-palette: {
-    primary: {
-    main: '#fff', 
-    },
-    text: {
-    primary: '#00000',
-    },
-},
-})
+// const Theme = createTheme({
+// typography: {
+//     "fontFamily": `'DM Sans', "Roboto", "sans-serif"`,
+//     "Color": "black"
+// },
+// palette: {
+//     primary: {s
+//     main: '#fff', 
+//     }
+// },
+// })
 
-export default Theme
+
 
 // xs, extra-small: 0px
 // sm, small: 600px
