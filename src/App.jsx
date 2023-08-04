@@ -1,15 +1,15 @@
 import React from "react"
-import Navbar from "./components/Navbar"
-import { ThemeProvider } from '@mui/material/styles';
-import Theme from "./assets/Theme";
+import Navbar from "./common/Navbar"
+// import { ThemeProvider } from '@mui/material/styles';
+// import Theme from "./common/Navbar";
 
 
 function App() {
   return (
-    <ThemeProvider theme={Theme}>
+    <>
       <Navbar/>
       <h1>Hello there</h1>
-    </ThemeProvider>
+    </>
   )
 }
 
