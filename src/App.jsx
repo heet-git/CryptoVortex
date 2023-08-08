@@ -1,11 +1,22 @@
 import React from "react"
 import Navbar from "./common/Navbar"
 import { ThemeProvider, createTheme } from "@mui/material"
+import Explore from "./components/Explore"
 
+const customFonts = {
+  chakraPetch: "'Chakra Petch', sans-serif",
+  raleway: "'Raleway', 'Roboto', sans-serif"
+}
 
 const Theme = createTheme({
 typography: {
-    "fontFamily": `'DM Sans', "Roboto", "sans-serif"`,
+    "fontFamily": customFonts.raleway,
+    h5:{
+      "fontFamily": customFonts.chakraPetch,
+    },
+    h6:{
+      "fontFamily": customFonts.chakraPetch,
+    },
 },
 palette: {
     primary: {
@@ -30,6 +41,7 @@ function App() {
   return (
     <ThemeProvider theme={Theme}>
         <Navbar />
+        <Explore />
     </ThemeProvider>
   )
 }

@@ -9,7 +9,6 @@ import MenuSharpIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import CycloneIcon from '@mui/icons-material/Cyclone';
 
 const pages = ['Explore', 'Learn', 'News', 'About'];
 
@@ -25,9 +24,10 @@ function Navbar() {
     };
 
     return (
-        <AppBar position="static" sx={{borderBottom: 'none'}}>
+        <AppBar position="static" elevation={1}>
             <Container maxWidth="xl">
-            <Toolbar disableGutters>
+            <Toolbar disableGutters> 
+            {/* Desktop View */}
                 <Typography
                 variant="h5"
                 noWrap
@@ -42,76 +42,74 @@ function Navbar() {
                     textDecoration: "none",
                 }}
                 >
-                CryptoV<CycloneIcon/>rtex
+                CryptoVortex
                 </Typography>
 
-                <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, padding: 0, margin: 0}}>
-                <IconButton
-                    size="small"
-                    aria-haspopup="true"
-                    onClick={handleOpenNavMenu}
-                    color="inherit"
-                >
-                    <MenuSharpIcon />
-                </IconButton>
-                <Menu
-                    anchorEl={anchorElNav}
-                    anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left"
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                        vertical: "top",
-                        horizontal: "left"
-                    }}
-                    open={Boolean(anchorElNav)}
-                    onClose={handleCloseNavMenu}
-                    sx={{
-                    display: { xs: "block", md: "none" },
-                    justifyContent: 'center'
-                    }}
-                >
-                    {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}
-                    >
-                        <Typography 
-                        textAlign="center"  
-                        sx={{color:'black'}}>
-                        {page}
-                        </Typography>
-                    </MenuItem>
-                    ))}
-                    <MenuItem onClick={handleCloseNavMenu}>
-                        <Button variant='text' sx={{color:'black'}}>Sign in</Button>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNavMenu}>
-                        <Button variant='contained'>Get started</Button>
-                    </MenuItem>
-                    
-                </Menu>
-                </Box>
                 {/* Mobile View */}
 
+                <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, padding: 0, margin: 0}}>
+                    <IconButton
+                        size="small"
+                        aria-haspopup="true"
+                        onClick={handleOpenNavMenu}
+                        color="inherit"
+                    >
+                        <MenuSharpIcon />
+                    </IconButton>
+                    <Menu
+                        anchorEl={anchorElNav}
+                        anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "left"
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: "top",
+                            horizontal: "left"
+                        }}
+                        open={Boolean(anchorElNav)}
+                        onClose={handleCloseNavMenu}
+                        sx={{
+                        display: { xs: "block", md: "none" },
+                        justifyContent: 'center',
+                        }}
+                        >
+                        {pages.map((page) => (
+                        <MenuItem key={page} onClick={handleCloseNavMenu}
+                        >
+                            <Typography 
+                            textAlign="center"  
+                            sx={{color:'black'}}>
+                            {page}
+                            </Typography>
+                        </MenuItem>
+                        ))}
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Button variant='text' sx={{color:'black'}}>Sign in</Button>
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Button variant='contained'>Get started</Button>
+                        </MenuItem>
+                    </Menu>
+                </Box>
+                
                 <Typography
-                    variant="h5"
+                    variant="h6"
                     noWrap
                     component="a"
                     href="/"
                     sx={{
-                        mr: 1,
+                        mr:2,
                         display: { xs: "flex", md: "none" },
                         alignItems:"center",
                         flexGrow: 1,
-                        fontFamily: "monospace",
-                        fontWeight: 700,
+                        fontWeight: 600,
                         color: "black",
                         textDecoration: "none",
                     }}
                 >
-                    CryptoV<CycloneIcon sx={{ m:0, p:0}}/>rtex
+                    CryptoVortex
                 </Typography>
-                
                 <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent: 'center'}}>
                     {pages.map((page) => (
                     <Button
