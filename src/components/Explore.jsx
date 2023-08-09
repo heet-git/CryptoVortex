@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
+import Stack from "@mui/material/Stack";
 import homeImgLight from "/public/home-img-light.jpg"
 import homeImgDark from "/public/home-img-dark.jpg"
 
@@ -11,7 +12,6 @@ function Explore(){
                     backgroundImage: `url(${homeImgLight})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    backgroundColor: "white",
                     minHeight: 500,
                     display: "flex",
                     flexDirection: "column",
@@ -20,17 +20,29 @@ function Explore(){
                     padding: 5,
                     textAlign: "center",
                     display:{xs: "none", md: "flex"},
-                    border: '1px solid red'
                     }}
             >
                 <Typography
-                    variant="h4"
-                    sx={{border: '1px solid red'}}
+                    variant="h3"
+                    sx={{
+                        fontWeight: "600",
+                        maxWidth: "lg"
+                    }}
                 >
-                    Dive into the CryptoVortex: A Whirlwind of Trading Opportunities
+                    Dive into the CryptoVortex: 
+                    A Whirlwind of Trading Opportunities
                 </Typography>
 
             </Box>
+
+            {/* <Stack 
+                direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}> */}
+                <Typography variant="h6" color="primary">Item 1</Typography>
+                <Typography variant="h6" color="primary">Item 2</Typography>
+                <Typography variant="h6" color="primary">Item 3</Typography>
+            {/* </Stack> */}
+
+            {/* Mobile view */}
             <Box
                 component="img"
                 src={homeImgLight}

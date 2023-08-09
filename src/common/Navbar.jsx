@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
+
 const pages = ['Explore', 'Learn', 'News', 'About'];
 
 function Navbar() {
@@ -25,8 +26,9 @@ function Navbar() {
 
     return (
         <AppBar position="static" elevation={1}>
-            <Container maxWidth="xl">
-            <Toolbar disableGutters> 
+            <Container maxWidth="xl" >
+            <Toolbar disableGutters>
+
             {/* Desktop View */}
                 <Typography
                 variant="h5"
