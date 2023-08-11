@@ -1,15 +1,36 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Box, Container, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
-
 import homeImgLight from "/public/home-img-light.jpg"
 import homeImgDark from "/public/home-img-dark.jpg"
 
+
 function Explore(){
+    
+    const [coins, setCoins] = useState([])
+
+
+    const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C30d%2C200d%2C1y&locale=en&precision=2'
+    
+    useEffect(()=>{
+        async function getCoins(){
+            const response = await fetch(url)
+            if(!response.ok)
+            throw new Error ({
+                message: "failed to fetch data",
+                statusText: response.statusText,
+                status: response.status
+            })
+            const data = await response.json()
+            setCoins(data)
+        }
+        getCoins()
+    }, [])
+
     return(
         <Container maxWidth="xl" disableGutters>
             <Box
@@ -79,83 +100,23 @@ function Explore(){
                     py: 4,
                     m: 1,
                 }}
-            >
-            
-            <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    alt="green iguana"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                    Coin
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                    Coin info
-                    </Typography>
-                </CardContent>
-                </CardActionArea>
-            </Card>
-
-            <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    alt="green iguana"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                    Coin
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                    Coin info
-                    </Typography>
-                </CardContent>
-                </CardActionArea>
-            </Card>
-
-            <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    alt="green iguana"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                    Coin
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                    Coin info
-                    </Typography>
-                </CardContent>
-                </CardActionArea>
-            </Card>
-
-            <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    alt="green iguana"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                    Coin
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                    Coin info
-                    </Typography>
-                </CardContent>
-                </CardActionArea>
-            </Card>
+            >    
+            {coins.slice(0, 4).map((coin, index) => (
+                <Card key={index} sx={{ maxWidth: 345 }}>
+                    <CardActionArea>
+                        <CardMedia component="img" height="140" image={coin.image} alt={coin.name} />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {coin.name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                {coin.current_price}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            ))}
+    
             </Stack>
             </Box>
             {/* Mobile view */}
