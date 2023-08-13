@@ -6,32 +6,29 @@ const customFonts = {
 }
 
 const Theme = createTheme({
-typography: {
-    "fontFamily": customFonts.raleway,
-    h5:{
-        "fontFamily": customFonts.chakraPetch,
+    typography: {
+        "fontFamily": customFonts.raleway,
+        h5:{
+            "fontFamily": customFonts.chakraPetch,
+        },
+        h6:{
+            "fontFamily": customFonts.chakraPetch,
+        },
     },
-    h6:{
-        "fontFamily": customFonts.chakraPetch,
+    palette: {
+        primary: {
+            main: '#fff',
+        },
     },
-},
-palette: {
-    primary: {
-        main: '#fff',
-    },
-    text: {
-        primary: '#fff'
-    }
-},
-components: {
-    MuiTypography: {
-        styleOverrides: {
-            root: {
-            color: 'black'
+    components: {
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    color: '#000',
+                },
             }
         }
-    }
-},
+    },
 })
 
 export default Theme

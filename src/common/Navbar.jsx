@@ -40,8 +40,8 @@ function Navbar() {
                     display: { xs: "none", md: "flex" },
                     alignItems: "center",
                     fontWeight: 700,
-                    color: "Primary",
                     textDecoration: "none",
+                    color: '#4E4FEB'
                 }}
                 >
                 CryptoVortex
@@ -90,7 +90,13 @@ function Navbar() {
                             <Button variant='text' sx={{color:'black'}}>Sign in</Button>
                         </MenuItem>
                         <MenuItem onClick={handleCloseNavMenu}>
-                            <Button variant='contained'>Get started</Button>
+                            <Button 
+                            variant="contained" 
+                            sx={{
+                                backgroundColor: "#4E4FEB",
+                                color: "#fff"
+                            }}
+                            >Get started</Button>
                         </MenuItem>
                     </Menu>
                 </Box>
@@ -123,9 +129,15 @@ function Navbar() {
                     </Button>
                     ))}
                 </Box>
-                <Box sx={{display: {xs: "none", md:"block"} }} >
-                <Button variant='text' sx={{color:'black'}}>Sign in</Button>
-                <Button variant='contained'>Get started</Button>
+                <Box sx={{display: {xs: "none", md:"block"}}} >
+                <Button variant='text' sx={{color:'black', paddingRight: 2}}>Sign in</Button>
+                <Button variant='contained'
+                sx={{
+                    backgroundColor: "#4E4FEB",
+                    color: "#fff",
+                    borderRadius: "20px",
+                }}
+                >Get started</Button>
                 </Box>
 
             </Toolbar>
