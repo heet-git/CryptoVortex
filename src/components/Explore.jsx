@@ -5,8 +5,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import TrendingUpTwoToneIcon from '@mui/icons-material/TrendingUpTwoTone';
 import homeImgLight from "/public/home-img-light.jpg"
 import homeImgDark from "/public/home-img-dark.jpg"
+import { border } from "@chakra-ui/react";
 
 
 function Explore(){
@@ -14,22 +16,39 @@ function Explore(){
     const [coins, setCoins] = useState([])
 
 
-    const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C30d%2C200d%2C1y&locale=en&precision=2'
+    // const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C30d%2C200d%2C1y&locale=en&precision=2'
+
+    // const url = 'https://api.coingecko.com/api/v3/search/trending'
+
+    const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d%2C14d%2C30d%2C200d%2C1y%20&locale=en&precision=2'
     
-    useEffect(()=>{
-        async function getCoins(){
-            const response = await fetch(url)
-            if(!response.ok)
-            throw new Error ({
-                message: "failed to fetch data",
-                statusText: response.statusText,
-                status: response.status
-            })
-            const data = await response.json()
-            setCoins(data)
+    useEffect(() => {
+        async function getCoins() {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error({
+                        message: "failed to fetch data",
+                        statusText: response.statusText,
+                        status: response.status,
+                    });
+                }
+            const data = await response.json();
+            setCoins(data);
+            console.log(coins)
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-        getCoins()
-    }, [])
+    }
+    getCoins();
+    const intervalId = setInterval(() => {
+        getCoins();
+    }, 5 * 60 * 1000);
+
+    return() =>{
+        clearInterval(intervalId)
+    }
+}, []);
 
     return(
         <Container maxWidth="xl" disableGutters>
@@ -48,7 +67,7 @@ function Explore(){
                     }}
             >
                 <Typography
-                    variant="h3"
+                    variant="h2"
                     sx={{
                         fontWeight: "600",
                         maxWidth: "lg"
@@ -87,31 +106,81 @@ function Explore(){
                 </Box>
             </Stack>
 
-            <Box>
+            <Box
+                sx={{
+                    p: 3,
+                }}
+            >
                 <Typography
-                variant="h4"
-                >Trending</Typography>
+                    variant="h4"
+                    mb={3}
+                    ml={5}
+                >Trending 
+                
+                <TrendingUpTwoToneIcon
+                    fontSize="large"
+                /></Typography>
             
             <Stack
                 direction={{ xs: 'column', sm: 'row' }} 
-                spacing={{ xs: 1, sm: 2, md: 4 }}
-                sx={{
-                    justifyContent:"space-evenly",
-                    py: 4,
-                    m: 1,
-                }}
+                spacing={{ xs: 1, sm: 2}}
+                justifyContent= "space-evenly"
             >    
-            {coins.slice(0, 4).map((coin, index) => (
-                <Card key={index} sx={{ maxWidth: 345 }}>
+            {coins.slice(0, 5).map((coin, index) => (
+                <Card key={index}
+                variant="outlined"
+                sx={{
+                    maxWidth: "15%",
+                    borderRadius: "10px",
+                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                }}
+                >
                     <CardActionArea>
-                        <CardMedia component="img" height="140" image={coin.image} alt={coin.name} />
+                        <Typography variant="subtitle1"
+                        sx={{ml: 2, mt: 1}}
+                        >
+                        Rank: {coin.market_cap_rank}
+                        </Typography>
+
+                        <Box
+                        sx={{ 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            marginTop: 2,
+                            padding: 4
+                            }}
+                        >
+                        <CardMedia 
+                            component="img" 
+                            image={coin.image} 
+                            alt={coin.name} 
+                            sx={{ 
+                                borderRadius: "10px"
+                            }}
+                            />
+                        </Box>
                         <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                {coin.name}
+                            <Box sx={{display: "flex"}}>
+                                <Typography variant="h6" component="div">
+                                    {coin.name}
+                                </Typography>
+                                <Typography 
+                                    variant="overline"
+                                    sx={{ml: 1,
+                                        textTransform: "uppercase",
+                                    }}
+                                >
+                                    ({coin.symbol})
+                                </Typography>
+                            </Box>
+                            <Typography variant="subtitle2">
+                            Price: ${coin.current_price}
                             </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {coin.current_price}
+
+                            <Typography variant="subtitle2" noWrap>
+                            Market cap: ${coin.market_cap}
                             </Typography>
+                            
                         </CardContent>
                     </CardActionArea>
                 </Card>
