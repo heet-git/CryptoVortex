@@ -8,37 +8,28 @@ import { CardActionArea } from '@mui/material';
 import TrendingUpTwoToneIcon from '@mui/icons-material/TrendingUpTwoTone';
 import homeImgLight from "/public/home-img-light.jpg"
 import homeImgDark from "/public/home-img-dark.jpg"
+import features from "../data/features";
 
-import algorithmImg from "/public/algorithms.png"
-import diversificationImg from "/public/diversification.png"
-import securityImg from "/public/security.png"
-import growImg from "/public/grow.png"
-
-const features = [
+const stats = [
     {
-        featureImg: diversificationImg,
-        featureTitle: 'Portfolio Diversification',
-        description:'Maximize your profits by diversifying your crypto portfolio effortlessly',
+        number: '$1 billion',
+        description: 'Quarterly volume traded',
     },
     {
-        featureImg: algorithmImg,
-        featureTitle: 'Smart Trading',
-        description: 'Our advanced trading algorithms leverage AI and machine learning to execute trades based on your chosen strategies',
+        number: '20+',
+        description: 'Cryptocurrencies' ,
     },
     {
-        featureImg: securityImg,
-        featureTitle: 'Secure One-Click Transactions',
-        description: 'Execute trades swiftly without compromising on security. With multi-factor authentication and robust encryption, your transactions are safeguarded from unauthorized access',
+        number: '1 million',
+        description: 'Registered users' ,
     },
     {
-        featureImg: growImg,
-        featureTitle:'Learn and Thrive',
-        description:'Elevate your trading skills with our rich educational resources',
+        number: '<0.1%',
+        description: 'Lowest transaction fee',
     },
 ]
 
-
-function Explore(){
+function Explore(){  
     
     const [coins, setCoins] = useState([])
 
@@ -104,27 +95,16 @@ function Explore(){
                 direction={{ xs: 'column', sm: 'row' }} 
                 spacing={{ xs: 1, sm: 2, md: 4 }}
                 sx={{
-                justifyContent:"space-evenly",
-                py: 4,
-                m: 1,
+                    justifyContent:"space-evenly",
+                    marginY: 4
                 }}
-                >
-                <Box>
-                    <Typography variant="h4">$1 billion</Typography>
-                    <Typography variant="body1">Quarterly volume traded</Typography>
-                </Box>
-                <Box>
-                    <Typography variant="h4">20+</Typography>
-                    <Typography variant="body1">Cryptocurrencies listed</Typography>
-                </Box>
-                <Box>
-                    <Typography variant="h4">1 million</Typography>
-                    <Typography variant="body1">Registered users</Typography>
-                </Box>
-                <Box>
-                    <Typography variant="h4">&lt;0.1%</Typography>
-                    <Typography variant="body1">Lowest transaction fees</Typography>
-                </Box>
+            >
+                {stats.map((item, index) => (
+                    <Box key={index}>
+                        <Typography variant="h4">{item.number}</Typography>
+                        <Typography variant="body1">{item.description}</Typography>
+                    </Box>
+                ))}
             </Stack>
 
             <Box
@@ -135,7 +115,7 @@ function Explore(){
                 <Typography
                     variant="h4"
                     mb={3}
-                    ml={5}
+                    sx={{textAlign: 'center'}}
                 >Trending 
                 
                 <TrendingUpTwoToneIcon
@@ -210,24 +190,39 @@ function Explore(){
                 </Stack>
             </Box>
             
-            <Box>
+            <Box
+            sx={{
+                textAlign: 'center',
+                p: 3,
+                mt: 2
+            }}
+            >
                 <Typography
                     variant="h4"
+                    mb={3}
                 >
                     A crypto exchange you can trust
                 </Typography>
                 <Stack direction="row">
                     {features.map((item, index) => (
-                        <Box key={index}>
-                            <img src={item.featureImg} alt={`Image ${index}`}/>
+                        <Box key={index}
+                            sx={{
+                                p: 3,
+                            }}>
+                            <img 
+                                src={item.featureImg}
+                                alt={`Image ${index}`}
+                                style={{ width: '70px', height: '70px' }}
+                                />
                             <Typography
-                            variant="h6"
+                                variant="h6"
+                                mt={1.5}
+
                             >
                                 {item.featureTitle}
                             </Typography>
                             <Typography
-                            variant="body1"
-                            >
+                            variant="body1">
                                 {item.description}
                             </Typography>
                         </Box>
