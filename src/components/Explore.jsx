@@ -5,7 +5,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import Button from '@mui/material/Button';
 import TrendingUpTwoToneIcon from '@mui/icons-material/TrendingUpTwoTone';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AppleLogin from '/public/apple-login.png'
+import GoogleLogin from '/public/google-login.png'
 import homeImgLight from "/public/home-img-light.jpg"
 import homeImgDark from "/public/home-img-dark.jpg"
 import features from "../data/features";
@@ -69,26 +73,68 @@ function Explore(){
                     backgroundImage: `url(${homeImgLight})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    minHeight: 500,
+                    minHeight: 550,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
                     padding: 5,
                     textAlign: "center",
-                    }}
-            >
+                    }}>
+                <div
+                    style={{
+                    flex: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    }}>
                 <Typography
-                    variant="h3"
+                    variant="h2"
                     sx={{
                         fontWeight: "600",
-                        maxWidth: "lg"
+                        maxWidth: "lg",
+                        mb: 10
                     }}
                 >
                     Dive into the CryptoVortex: 
                     A Whirlwind of Trading Opportunities
                 </Typography>
-
+                
+                <Box 
+                    sx={{
+                    }}>
+                    <Button variant="contained" sx={{m: 1}}><AccountCircleIcon/>Sign up with Email</Button>
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontWeight: 800
+                        }}
+                        >
+                        <span
+                            style={{
+                            flexGrow: 1,
+                            borderBottom: '1px solid #000',
+                            marginRight: '8px',
+                            }}
+                        ></span>
+                        OR
+                        <span
+                            style={{
+                            flexGrow: 1,
+                            borderBottom: '1px solid #000',
+                            marginLeft: '8px',
+                            }}
+                        ></span>
+                        </Typography>
+                    <Stack direction="row" >
+                    <Button variant="contained" sx={{m: 1}}><img src={GoogleLogin} alt="Google Login" style={{ height: '20px', marginRight: '5px' }}/> Sign in with Google</Button>
+                    <Button variant="contained" sx={{m: 1}}><img src={AppleLogin} alt="Apple Login" style={{ height: '20px', marginRight: '5px' }} /> Sign in with Apple</Button>
+                    </Stack>
+                </Box>
+                </div>
             </Box>
 
             <Stack 
@@ -96,17 +142,17 @@ function Explore(){
                 spacing={{ xs: 1, sm: 2, md: 4 }}
                 sx={{
                     justifyContent:"space-evenly",
-                    marginY: 4
+                    paddingY: 7,
+                    backgroundColor:'#4E4FEB'
                 }}
             >
                 {stats.map((item, index) => (
                     <Box key={index}>
-                        <Typography variant="h4">{item.number}</Typography>
-                        <Typography variant="body1">{item.description}</Typography>
+                        <Typography variant="h4" fontWeight='500' color= '#fff'>{item.number}</Typography>
+                        <Typography variant="body1" color= '#fff'>{item.description}</Typography>
                     </Box>
                 ))}
             </Stack>
-
             <Box
                 sx={{
                     p: 3,
@@ -114,7 +160,8 @@ function Explore(){
             >
                 <Typography
                     variant="h4"
-                    mb={3}
+                    fontWeight="600"
+                    mb={7}
                     sx={{textAlign: 'center'}}
                 >Trending 
                 
@@ -199,10 +246,11 @@ function Explore(){
             >
                 <Typography
                     variant="h4"
+                    fontWeight="600"
                     mb={3}
-                >
-                    A crypto exchange you can trust
+                > A crypto exchange you can trust
                 </Typography>
+
                 <Stack direction="row">
                     {features.map((item, index) => (
                         <Box key={index}

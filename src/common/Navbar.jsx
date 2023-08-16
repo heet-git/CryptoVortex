@@ -9,6 +9,7 @@ import MenuSharpIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import { Avatar } from '@mui/material';
 
 
 const pages = ['Explore', 'Learn', 'News', 'About'];
@@ -30,23 +31,24 @@ function Navbar() {
             <Toolbar disableGutters>
 
             {/* Desktop View */}
-                <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                    mr: 2,
-                    display: { xs: "none", md: "flex" },
-                    alignItems: "center",
-                    fontWeight: 700,
-                    textDecoration: "none",
-                    color: '#4E4FEB'
-                }}
-                >
-                CryptoVortex
-                </Typography>
-
+                <Box display="flex" alignItems="center">
+                    <Avatar src='/public/logo.png'/>
+                    <Typography
+                        variant="h5"
+                        noWrap
+                        component="a"
+                        href="/"
+                        sx={{
+                            mr: 2,
+                            display: { xs: "none", md: "flex" },
+                            alignItems: "center",
+                            fontWeight: 700,
+                            textDecoration: "none",
+                            color: '#4E4FEB'
+                        }}
+                        > CryptoVortex
+                    </Typography>
+                </Box>
                 {/* Mobile View */}
 
                 <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, padding: 0, margin: 0}}>
