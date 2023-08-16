@@ -7,11 +7,11 @@ import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import Button from '@mui/material/Button';
 import TrendingUpTwoToneIcon from '@mui/icons-material/TrendingUpTwoTone';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AppleLogin from '/public/apple-login.png'
-import GoogleLogin from '/public/google-login.png'
 import homeImgLight from "/public/home-img-light.jpg"
 import homeImgDark from "/public/home-img-dark.jpg"
+import GoogleLogin from '/public/google-login.png'
+import AppleLogin from '/public/apple-login.png'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import features from "../data/features";
 
 const stats = [
@@ -277,7 +277,27 @@ function Explore(){
                     ))}
                 </Stack>  
             </Box>
+            <Box
 
+            >
+                <Stack>
+                    <Box>
+                        <img src="/verify-user.png" alt='verification'/>
+                        <Typography></Typography>
+                    </Box>
+                    <Box>
+                        <img src="/add-fund.png" alt="Add fund"/>
+                        <Typography></Typography>
+                    </Box>
+                    <Box>
+                        <img src="/trading-user.png" alt="Start trading"/>
+                        <Typography></Typography>
+                    </Box>
+                </Stack>
+                <Box>
+                    <img src="/mobile-view.png" alt="Mobile view"/>            
+                </Box>
+            </Box>
 
             {/* Mobile view */}
             {/* <Box
