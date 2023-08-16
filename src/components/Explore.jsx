@@ -94,7 +94,7 @@ function Explore(){
                     sx={{
                         fontWeight: "600",
                         maxWidth: "lg",
-                        mb: 10
+                        mb: 5
                     }}
                 >
                     Dive into the CryptoVortex: 
@@ -161,7 +161,7 @@ function Explore(){
                 <Typography
                     variant="h4"
                     fontWeight="600"
-                    mb={7}
+                    my={5}
                     sx={{textAlign: 'center'}}
                 >Trending 
                 
@@ -247,7 +247,7 @@ function Explore(){
                 <Typography
                     variant="h4"
                     fontWeight="600"
-                    mb={3}
+                    my={5}
                 > A crypto exchange you can trust
                 </Typography>
 
