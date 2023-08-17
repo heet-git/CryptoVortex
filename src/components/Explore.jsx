@@ -302,8 +302,8 @@ function Explore(){
                 </Stack>  
             </Box>
             
-            <Box display="flex" justifyContent='space-evenly' alignItems="flex-start" m={5}>
-                <Stack>
+            <Box display="flex" justifyContent='space-evenly' alignItems="flex-start" p={2} backgroundColor='#f5f5f5'>
+                <Stack maxWidth= "35rem">
                     <Typography variant="h3" fontWeight={600} mb={5}>
                         Start trading today!
                     </Typography>
@@ -313,8 +313,8 @@ function Explore(){
                             src="/verify-user.png"
                             alt="verification"
                             style={{
-                            width: "5rem",
-                            height: "5rem",
+                            width: "3.5rem",
+                            height: "3.5rem",
                             marginRight: "1.5rem",
                             }}
                             />
@@ -333,8 +333,8 @@ function Explore(){
                             src="/add-fund.png"
                             alt="Add fund"
                             style={{
-                            width: "5rem",
-                            height: "5rem",
+                            width: "3.5rem",
+                            height: "3.5rem",
                             marginRight: "1.5rem",
                             }}
                             />
@@ -352,8 +352,8 @@ function Explore(){
                             src="/trading-user.png"
                             alt="Start trading"
                             style={{
-                            width: "5rem",
-                            height: "5rem",
+                            width: "3.5rem",
+                            height: "3.5rem",
                             marginRight: "1.5rem",
                             }}
                             />
