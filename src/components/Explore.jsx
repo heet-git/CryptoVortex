@@ -7,12 +7,14 @@ import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import Button from '@mui/material/Button';
 import TrendingUpTwoToneIcon from '@mui/icons-material/TrendingUpTwoTone';
+import VerifiedIcon from '@mui/icons-material/Verified';
 import homeImgLight from "/public/home-img-light.jpg"
 import homeImgDark from "/public/home-img-dark.jpg"
 import GoogleLogin from '/public/google-login.png'
 import AppleLogin from '/public/apple-login.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import features from "../data/features";
+import { color } from "framer-motion";
 
 const stats = [
     {
@@ -104,7 +106,18 @@ function Explore(){
                 <Box 
                     sx={{
                     }}>
-                    <Button variant="contained" sx={{m: 1}}><AccountCircleIcon/>Sign up with Email</Button>
+                    <Button variant="contained" 
+                        sx={{
+                            m: 1,
+                            backgroundColor:'#4E4FEB', 
+                            color:'#fff',
+                            boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)'
+                            }}>
+                    <AccountCircleIcon
+                        sx={{
+                            mr:1
+                        }}
+                    />Sign up with Email</Button>
                     <Typography
                         variant="body1"
                         sx={{
@@ -130,8 +143,20 @@ function Explore(){
                         ></span>
                         </Typography>
                     <Stack direction="row" >
-                    <Button variant="contained" sx={{m: 1}}><img src={GoogleLogin} alt="Google Login" style={{ height: '20px', marginRight: '5px' }}/> Sign in with Google</Button>
-                    <Button variant="contained" sx={{m: 1}}><img src={AppleLogin} alt="Apple Login" style={{ height: '20px', marginRight: '5px' }} /> Sign in with Apple</Button>
+                        <Button 
+                            variant="contained" 
+                            sx={{m: 1, mr: 3, backgroundColor: '#fff', boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)'}}>
+                            <img src={GoogleLogin} alt="Google Login" 
+                            style={{ height: '20px', marginRight: '5px'}}/> 
+                            Sign in with Google
+                        </Button>
+                        <Button 
+                            variant="contained" 
+                            sx={{m: 1, ml: 3, backgroundColor: '#fff', boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)'}}>
+                            <img src={AppleLogin} alt="Apple Login" 
+                            style={{ height: '20px', marginRight: '5px'}} /> 
+                            Sign in with Apple
+                        </Button>
                     </Stack>
                 </Box>
                 </div>
@@ -159,15 +184,12 @@ function Explore(){
                 }}
             >
                 <Typography
-                    variant="h4"
-                    fontWeight="600"
+                    variant="h3"
+                    fontWeight={600}
                     my={5}
                     sx={{textAlign: 'center'}}
-                >Trending 
-                
-                <TrendingUpTwoToneIcon
-                    fontSize="large"
-                /></Typography>
+                >Trending  <TrendingUpTwoToneIcon fontSize="large"/>
+                </Typography>
             
                 <Stack
                     direction={{ xs: 'column', sm: 'row' }} 
@@ -241,20 +263,21 @@ function Explore(){
             sx={{
                 textAlign: 'center',
                 p: 3,
-                mt: 2
+                my: 5
             }}
             >
                 <Typography
-                    variant="h4"
-                    fontWeight="600"
-                    my={5}
+                    variant="h3"
+                    fontWeight={600}
                 > A crypto exchange you can trust
+                <VerifiedIcon sx={{ml: 1, fontSize: '2rem'}}/>
                 </Typography>
 
                 <Stack direction="row">
                     {features.map((item, index) => (
                         <Box key={index}
                             sx={{
+                                mt: 3,
                                 p: 3,
                             }}>
                             <img 
@@ -263,7 +286,8 @@ function Explore(){
                                 style={{ width: '70px', height: '70px' }}
                                 />
                             <Typography
-                                variant="h6"
+                                variant="h5"
+                                fontWeight="600"
                                 mt={1.5}
 
                             >
@@ -277,25 +301,78 @@ function Explore(){
                     ))}
                 </Stack>  
             </Box>
-            <Box
-
-            >
+            
+            <Box display="flex" justifyContent='space-evenly' alignItems="flex-start" m={5}>
                 <Stack>
-                    <Box>
-                        <img src="/verify-user.png" alt='verification'/>
-                        <Typography></Typography>
-                    </Box>
-                    <Box>
-                        <img src="/add-fund.png" alt="Add fund"/>
-                        <Typography></Typography>
-                    </Box>
-                    <Box>
-                        <img src="/trading-user.png" alt="Start trading"/>
-                        <Typography></Typography>
+                    <Typography variant="h3" fontWeight={600} mb={5}>
+                        Start trading today!
+                    </Typography>
+                    <Box display="flex" flexDirection="column">
+                        <Box display="flex" alignItems="center" marginBottom="3rem">
+                            <img
+                            src="/verify-user.png"
+                            alt="verification"
+                            style={{
+                            width: "5rem",
+                            height: "5rem",
+                            marginRight: "1.5rem",
+                            }}
+                            />
+                            <div>
+                                <Typography variant="h5" fontWeight={600}>
+                                Verify your identity
+                                </Typography>
+                                <Typography variant="subtitle1">
+                                Provide a valid government issued id to verify your identity and secure
+                                your account.
+                                </Typography>
+                            </div>
+                        </Box>
+                        <Box display="flex" alignItems="center" marginBottom="3rem">
+                            <img
+                            src="/add-fund.png"
+                            alt="Add fund"
+                            style={{
+                            width: "5rem",
+                            height: "5rem",
+                            marginRight: "1.5rem",
+                            }}
+                            />
+                            <div>
+                                <Typography variant="h5" fontWeight={600}>
+                                Add fund to your account
+                                </Typography>
+                                <Typography variant="subtitle1">
+                                Variety of options available to easily add funds to your crypto account.
+                                </Typography>
+                            </div>
+                        </Box>
+                        <Box display="flex" alignItems="center" marginBottom="3rem">
+                            <img
+                            src="/trading-user.png"
+                            alt="Start trading"
+                            style={{
+                            width: "5rem",
+                            height: "5rem",
+                            marginRight: "1.5rem",
+                            }}
+                            />
+                            <div>
+                                <Typography variant="h5" fontWeight={600}>
+                                Start trading crypto
+                                </Typography>
+                                <Typography variant="subtitle1">
+                                Once funds added to the account you're all set to buy or sell crypto.
+                                </Typography>
+                            </div>
+                        </Box>
                     </Box>
                 </Stack>
                 <Box>
-                    <img src="/mobile-view.png" alt="Mobile view"/>            
+                    <img src="/mobile-view.png" alt="Mobile view"
+                        style={{maxHeight: "30rem", borderRadius: "20px",
+                        boxShadow: "0px 0px 40px 0px rgba(0, 0, 0, 0.6)"}}
+                    />            
                 </Box>
             </Box>
 
