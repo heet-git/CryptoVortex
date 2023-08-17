@@ -14,6 +14,9 @@ const Theme = createTheme({
         h6:{
             "fontFamily": customFonts.chakraPetch,
         },
+        button:{
+            textTransform: 'none'
+        }
     },
     palette: {
         primary: {
