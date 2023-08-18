@@ -1,16 +1,26 @@
 import React from "react"
-import Navbar from "./common/Navbar"
+import { 
+  Route,
+  RouterProvider, 
+  createBrowserRouter, 
+  createRoutesFromElements } from "react-router"
 import { ThemeProvider } from "@mui/material"
+import Layout from "./common/Layout"
+//import Navbar from "./common/Navbar"
 import Explore from "./components/Explore"
-import Footer from "./common/Footer"
+//import Footer from "./common/Footer"
 import Theme from "./assets/Theme"
+
+const allRoutes = createBrowserRouter(createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+        <Route index element={<Explore />} />
+    </Route>
+))
 
 function App() {
   return (
     <ThemeProvider theme={Theme}>
-        <Navbar />
-        <Explore />
-        <Footer/>
+        <RouterProvider router={allRoutes}/>
     </ThemeProvider>
   )
 }
