@@ -3,12 +3,10 @@ import {
   Route,
   RouterProvider, 
   createBrowserRouter, 
-  createRoutesFromElements } from "react-router"
+  createRoutesFromElements } from "react-router-dom"
 import { ThemeProvider } from "@mui/material"
 import Layout from "./common/Layout"
-//import Navbar from "./common/Navbar"
 import Explore from "./components/Explore"
-//import Footer from "./common/Footer"
 import Theme from "./assets/Theme"
 
 const allRoutes = createBrowserRouter(createRoutesFromElements(
@@ -20,7 +18,9 @@ const allRoutes = createBrowserRouter(createRoutesFromElements(
 function App() {
   return (
     <ThemeProvider theme={Theme}>
-        <RouterProvider router={allRoutes}/>
+        <RouterProvider router={allRoutes}>
+          <Layout/>
+        </RouterProvider>
     </ThemeProvider>
   )
 }
