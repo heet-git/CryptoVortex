@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -78,16 +79,34 @@ function Navbar() {
                         justifyContent: 'center',
                         }}
                         >
-                        {pages.map((page) => (
-                        <MenuItem key={page} onClick={handleCloseNavMenu}
-                        >
-                            <Typography 
-                            textAlign="center"  
-                            sx={{color:'black'}}>
-                            {page}
-                            </Typography>
-                        </MenuItem>
-                        ))}
+                            <NavLink to="/explore" onClick={handleCloseNavMenu}>
+                                <MenuItem>
+                                    <Typography textAlign="center" sx={{ color: 'black' }}>
+                                        Explore
+                                    </Typography>
+                                </MenuItem>
+                            </NavLink>
+                            <NavLink to="/Learn" onClick={handleCloseNavMenu}>
+                                <MenuItem>
+                                    <Typography textAlign="center" sx={{ color: 'black' }}>
+                                        Learn
+                                    </Typography>
+                                </MenuItem>
+                            </NavLink>
+                            <NavLink to="/News" onClick={handleCloseNavMenu}>
+                                <MenuItem>
+                                    <Typography textAlign="center" sx={{ color: 'black' }}>
+                                        News
+                                    </Typography>
+                                </MenuItem>
+                            </NavLink>
+                            <NavLink to="/About" onClick={handleCloseNavMenu}>
+                                <MenuItem>
+                                    <Typography textAlign="center" sx={{ color: 'black' }}>
+                                        About
+                                    </Typography>
+                                </MenuItem>
+                            </NavLink>
                         <MenuItem onClick={handleCloseNavMenu}>
                             <Button variant='text' sx={{color:'black'}}>Sign in</Button>
                         </MenuItem>
@@ -121,15 +140,34 @@ function Navbar() {
                     CryptoVortex
                 </Typography>
                 <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent: 'center'}}>
-                    {pages.map((page) => (
-                    <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: "black", display: "block"}}
-                    >
-                    {page}
-                    </Button>
-                    ))}
+                    <NavLink to="/explore" onClick={handleCloseNavMenu}>
+                        <MenuItem>
+                            <Typography textAlign="center" sx={{ color: 'black' }}>
+                                Explore
+                            </Typography>
+                        </MenuItem>
+                    </NavLink>
+                    <NavLink to="/Learn" onClick={handleCloseNavMenu}>
+                        <MenuItem>
+                            <Typography textAlign="center" sx={{ color: 'black' }}>
+                                Learn
+                            </Typography>
+                        </MenuItem>
+                    </NavLink>
+                    <NavLink to="/News" onClick={handleCloseNavMenu}>
+                        <MenuItem>
+                            <Typography textAlign="center" sx={{ color: 'black' }}>
+                                News
+                            </Typography>
+                        </MenuItem>
+                    </NavLink>
+                    <NavLink to="/About" onClick={handleCloseNavMenu}>
+                        <MenuItem>
+                            <Typography textAlign="center" sx={{ color: 'black' }}>
+                                About
+                            </Typography>
+                        </MenuItem>
+                    </NavLink>
                 </Box>
                 <Box sx={{display: {xs: "none", md:"block"}}} >
                 <Button variant='text' sx={{color:'black', paddingRight: 2}}>Sign in</Button>

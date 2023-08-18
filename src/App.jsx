@@ -6,12 +6,13 @@ import {
   createRoutesFromElements } from "react-router-dom"
 import { ThemeProvider } from "@mui/material"
 import Layout from "./common/Layout"
-import Explore from "./components/Explore"
 import Theme from "./assets/Theme"
-
+import Home from "./components/Home"
+import Explore from "./components/Explore"
 const allRoutes = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-        <Route index element={<Explore />} />
+        <Route index element={<Home />} />
+        <Route path="explore" element={<Explore/>} />
     </Route>
 ))
 
@@ -20,7 +21,7 @@ function App() {
     <ThemeProvider theme={Theme}>
         <RouterProvider router={allRoutes}>
           <Layout/>
-        </RouterProvider>
+        </RouterProvider>w
     </ThemeProvider>
   )
 }
