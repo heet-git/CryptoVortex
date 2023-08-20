@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
-import { Box, Container, Typography } from "@mui/material";
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,12 +11,11 @@ import Button from '@mui/material/Button';
 import TrendingUpTwoToneIcon from '@mui/icons-material/TrendingUpTwoTone';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import homeImgLight from "/public/home-img-light.jpg"
-import homeImgDark from "/public/home-img-dark.jpg"
 import GoogleLogin from '/public/google-login.png'
 import AppleLogin from '/public/apple-login.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import features from "../data/features";
-import { color } from "framer-motion";
+import { getCoins } from "../assets/Api";
 
 const stats = [
     {
@@ -39,34 +40,20 @@ function Home(){
     
     const [coins, setCoins] = useState([])
 
-    const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d%2C30d%2C1y&locale=en&precision=2'
-    
-    useEffect(() => {
-        async function getCoins() {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error({
-                        message: "failed to fetch data",
-                        statusText: response.statusText,
-                        status: response.status,
-                    });
+    useEffect(()=>{
+            const fetchCoins = async () =>{
+                try{
+                    const coinsData = await getCoins()
+                    setCoins(coinsData)
+                } catch (error){
+                    console.log('Error fetching coins data:', error)
                 }
-            const data = await response.json();
-            setCoins(data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }
-    getCoins();
-    const intervalId = setInterval(() => {
-        getCoins();
-    }, 5 * 60 * 1000);
+            }
+            fetchCoins()
 
-    return () =>{
-        clearInterval(intervalId)
-    }
-}, []);
+            const intervalId = setInterval(fetchCoins, 45000)
+            return () => clearInterval(intervalId)
+        },[])
 
     return(
         <Container maxWidth="xl" disableGutters>
@@ -404,3 +391,34 @@ function Home(){
 }
 
 export default Home
+
+
+
+//     const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d%2C30d%2C1y&locale=en&precision=2'
+    
+//     useEffect(() => {
+//         async function getCoins() {
+//             try {
+//                 const response = await fetch(url);
+//                 if (!response.ok) {
+//                     throw new Error({
+//                         message: "failed to fetch data",
+//                         statusText: response.statusText,
+//                         status: response.status,
+//                     });
+//                 }
+//             const data = await response.json();
+//             setCoins(data);
+//         } catch (error) {
+//             console.error('Error fetching data:', error);
+//         }
+//     }
+//     getCoins();
+//     const intervalId = setInterval(() => {
+//         getCoins();
+//     }, 5 * 60 * 1000);
+
+//     return () =>{
+//         clearInterval(intervalId)
+//     }
+// }, []);
