@@ -21,7 +21,7 @@ function App() {
     <ThemeProvider theme={Theme}>
         <RouterProvider router={allRoutes}>
           <Layout/>
-        </RouterProvider>w
+        </RouterProvider>
     </ThemeProvider>
   )
 }
