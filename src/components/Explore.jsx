@@ -10,6 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar'
+import styled from 'styled-components';
 import { getMarketdata, getCoins } from '../assets/Api'
 
 
@@ -47,16 +48,12 @@ function Explore() {
         return () => clearInterval(intervalId)
     },[])
 
-    // -0.06850004555925471
+    const StyledText = styled.p`
+        color: green
+    `;
 
-    function removeExtra(value){
-        const shortValue = parseFloat(value).toFixed(2)
-        console.log(shortValue)
-    }
-
-    // console.log(parseFloat(cryptoData.price_change_percentage_1h_in_currency).toFixed(2))
-    removeExtra(cryptoData.price_change_percentage_1h_in_currency)
-
+// font-size: 16px;
+//    ${({ isPositive }) => isPositive ? 'color: green;' : 'color: red;'}
 
     function insertData (
         marketCapRank, 
@@ -88,9 +85,9 @@ function Explore() {
             coin.name,
             coin.image,
             coin.current_price,
-            coin.price_change_percentage_1h_in_currency,
-            coin.price_change_percentage_24h_in_currency,
-            coin.price_change_percentage_30d_in_currency,
+            removeExtra(coin.price_change_percentage_1h_in_currency),
+            removeExtra(coin.price_change_percentage_24h_in_currency),
+            removeExtra(coin.price_change_percentage_30d_in_currency),
             coin.market_cap,
             coin.circulating_supply
         );
@@ -112,7 +109,8 @@ function Explore() {
                 variant='subtitle2'  
                 mt= {2}  
             >
-                The global Cryptocurrency is change by%
+                The global Cryptocurrency is change by %
+                {/* {removeExtra(marketInfo.data.market_cap_change_percentage_24h_usd)} */}
             </Typography>
         </Box>
         <Box>
@@ -145,9 +143,21 @@ function Explore() {
                                 {row.name}
                             </TableCell>
                             <TableCell align="right">{row.currentPrice}</TableCell>
-                            <TableCell align="right">{row.priceChange1h}</TableCell>
-                            <TableCell align="right">{row.priceChange24h}</TableCell>
-                            <TableCell align="right">{row.priceChange30d}</TableCell>
+                            <TableCell align="right">
+                                <StyledText>
+                                    {row.priceChange1h}
+                                </StyledText>
+                            </TableCell>
+                            <TableCell align="right">
+                                <StyledText>
+                                    {row.priceChange24h}
+                                </StyledText>
+                            </TableCell>
+                            <TableCell align="right">
+                                <StyledText>
+                                    {row.priceChange30d}
+                                </StyledText>
+                            </TableCell>
                             <TableCell align="right">{row.marketCap}</TableCell>
                             <TableCell align="right">{row.circulatingSupply}</TableCell>
                             </TableRow>
