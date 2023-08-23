@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Container } from '@mui/material'
+import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { getMarketdata, getCoins } from '../assets/Api'
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,6 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar'
+import { getMarketdata, getCoins } from '../assets/Api'
 
 
 function Explore() {
@@ -46,7 +45,17 @@ function Explore() {
 
         const intervalId = setInterval(coinInfo, 4500)
         return () => clearInterval(intervalId)
-    })
+    },[])
+
+    // -0.06850004555925471
+
+    function removeExtra(value){
+        const shortValue = parseFloat(value).toFixed(2)
+        console.log(shortValue)
+    }
+
+    // console.log(parseFloat(cryptoData.price_change_percentage_1h_in_currency).toFixed(2))
+    removeExtra(cryptoData.price_change_percentage_1h_in_currency)
 
 
     function insertData (
@@ -87,16 +96,23 @@ function Explore() {
         );
     });
 
-    console.log(rows)
-
     return (
     <Container>
-        <Box>
-            <Typography>
+        <Box sx={{
+                    m: 10,
+                    textAlign: 'center',
+                }}>
+            <Typography
+                variant='h4'
+                fontWeight= {600}  
+            >
                 Explore Cryptocurrency Prices by Market Cap
             </Typography>
-            <Typography>
-                The global Cryptocurrency
+            <Typography
+                variant='subtitle2'  
+                mt= {2}  
+            >
+                The global Cryptocurrency is change by%
             </Typography>
         </Box>
         <Box>
@@ -122,10 +138,11 @@ function Explore() {
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                {row.marketCapRank}
                             </TableCell>
                             <TableCell align="right">
                                 <Avatar alt={row.name} src={row.image} />
+                                {row.name}
                             </TableCell>
                             <TableCell align="right">{row.currentPrice}</TableCell>
                             <TableCell align="right">{row.priceChange1h}</TableCell>
