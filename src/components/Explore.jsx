@@ -136,17 +136,16 @@ const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
                 mt= {2}  
             >
                 The global Cryptocurrency is change by %
-                {/* {removeExtra(marketInfo.data.market_cap_change_percentage_24h_usd)} */}
             </Typography>
         </Box>
         <Box>
             <Paper sx={{ width: '100%', mb: 2 }}>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                <Table>
                     <TableHead>
                     <TableRow>
-                        <TableCell>#</TableCell>
-                        <TableCell align="right">Name</TableCell>
+                        <TableCell align="center">Rank</TableCell>
+                        <TableCell align="left" >Name</TableCell>
                         <TableCell align="right">Current Price</TableCell>
                         <TableCell align="right">1h</TableCell>
                         <TableCell align="right">24h</TableCell>
@@ -159,14 +158,24 @@ const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
                         {rows.map((row) => (
                             <TableRow
                             key={row.marketCapRank}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 }, '& > *': {
+                                padding: '1rem'
+                            } }}
                             >
-                            <TableCell component="th" scope="row">
+                            <TableCell align="center">
                                 {row.marketCapRank}
                             </TableCell>
-                            <TableCell align="right">
-                                <Avatar alt={row.name} src={row.image} />
+                            <TableCell align="">
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        textAlign: 'right',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                <Avatar alt={row.name} src={row.image} sx={{mr: 2}}/>
                                 {row.name}
+                                </Box>
                             </TableCell>
                             <TableCell align="right">{row.currentPrice}</TableCell>
                             <TableCell align="right">
@@ -200,8 +209,6 @@ const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
-
-
             </Paper>
 
         </Box>
