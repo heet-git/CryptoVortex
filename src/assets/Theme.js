@@ -2,12 +2,12 @@ import { createTheme } from "@mui/material"
 
 const customFonts = {
     chakraPetch: "'Chakra Petch', sans-serif",
-    raleway: "'Raleway', 'Roboto', sans-serif"
+    lato: "'Lato', 'Roboto', sans-serif"
 }
 
 const Theme = createTheme({
     typography: {
-        "fontFamily": customFonts.raleway,
+        "fontFamily": customFonts.lato,
         h5:{
             "fontFamily": customFonts.chakraPetch,
         },

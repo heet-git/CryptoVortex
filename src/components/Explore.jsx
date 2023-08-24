@@ -55,6 +55,11 @@ function Explore() {
 // font-size: 16px;
 //    ${({ isPositive }) => isPositive ? 'color: green;' : 'color: red;'}
 
+    function removeExtra(value){
+        const shortValue = parseFloat(value).toFixed(2)
+        return shortValue
+    }
+
     function insertData (
         marketCapRank, 
         name, 
