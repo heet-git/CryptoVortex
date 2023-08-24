@@ -13,10 +13,16 @@ import Avatar from '@mui/material/Avatar'
 import styled from 'styled-components';
 import { getMarketdata, getCoins } from '../assets/Api'
 
+import TablePagination from '@mui/material/TablePagination';
+import Tooltip from '@mui/material/Tooltip';
+
 
 function Explore() {
     const [marketInfo, setMarketInfo] = useState([])
     const [cryptoData, setCryptoData] = useState([]) 
+
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
     useEffect(()=> {
         const globalData = async () =>{
@@ -98,6 +104,21 @@ function Explore() {
         );
     });
 
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 20));
+        setPage(0);
+    };
+
+   // Avoid a layout jump when reaching the last page with empty rows.
+    const emptyRows =
+        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+
+const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+
     return (
     <Container>
         <Box sx={{
@@ -119,7 +140,7 @@ function Explore() {
             </Typography>
         </Box>
         <Box>
-
+            <Paper sx={{ width: '100%', mb: 2 }}>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                     <TableHead>
@@ -170,6 +191,19 @@ function Explore() {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <TablePagination
+                rowsPerPageOptions={[20, 40, 100]}
+                component="div"
+                count={rows.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+
+
+            </Paper>
+
         </Box>
     </Container>
     )
