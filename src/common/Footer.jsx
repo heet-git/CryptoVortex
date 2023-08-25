@@ -20,7 +20,6 @@ function Footer() {
                 >
                 <Box>
                     <Box display='flex' flexDirection='row' alignItems='center'>
-                    <Avatar src='/public/logo.png'/>
                     <Typography
                         variant="h5"
                         noWrap

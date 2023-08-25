@@ -54,16 +54,17 @@ function Explore() {
         return () => clearInterval(intervalId)
     },[])
 
-    const StyledText = styled.p`
-        color: green
-    `;
-
-// font-size: 16px;
-//    ${({ isPositive }) => isPositive ? 'color: green;' : 'color: red;'}
-
     function removeExtra(value){
         const shortValue = parseFloat(value).toFixed(2)
         return shortValue
+    }
+
+    function addCommas(price){
+        const inFormat = parseFloat(price).toLocaleString('en-US',{
+            style: 'currency',
+            currency: 'USD'
+        })
+        return inFormat
     }
 
     function insertData (
@@ -95,12 +96,12 @@ function Explore() {
             coin.market_cap_rank,
             coin.name,
             coin.image,
-            coin.current_price,
-            removeExtra(coin.price_change_percentage_1h_in_currency),
-            removeExtra(coin.price_change_percentage_24h_in_currency),
-            removeExtra(coin.price_change_percentage_30d_in_currency),
-            coin.market_cap,
-            coin.circulating_supply
+            addCommas(coin.current_price),
+            addCommas(removeExtra(coin.price_change_percentage_1h_in_currency)),
+            addCommas(removeExtra(coin.price_change_percentage_24h_in_currency)),
+            addCommas(removeExtra(coin.price_change_percentage_30d_in_currency)),
+            addCommas(coin.market_cap),
+            addCommas(coin.circulating_supply)
         );
     });
 
@@ -117,7 +118,7 @@ function Explore() {
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+    const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
 
     return (
     <Container>
@@ -143,7 +144,7 @@ const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
-                        <TableRow sx={{ '& > *': {fontWeight: '600'}}}>
+                        <TableRow>
                             <TableCell>Rank</TableCell>
                             <TableCell align="left" >Name</TableCell>
                             <TableCell align="right">Current Price</TableCell>
@@ -154,45 +155,39 @@ const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
                             <TableCell align="right">Circulating supply</TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody sx={{ '& > *': {fontWeight: '600'}}}>
+                    <TableBody>
                         {rows.map((row) => (
                             <TableRow
                                 key={row.marketCapRank}
-                                sx={{  '& > *': {fontWeight: '600'}}}
+                                sx={{ '& > *': {fontWeight: '600'}}}
                             >
-                            <TableCell>
-                                {row.marketCapRank}
-                            </TableCell>
-                            <TableCell>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        textAlign: 'right',
-                                        alignItems: 'center',
-                                    }}
-                                >
-                                <Avatar alt={row.name} src={row.image} sx={{mr: 2}}/>
-                                {row.name}
-                                </Box>
-                            </TableCell>
-                            <TableCell align="right">{row.currentPrice}</TableCell>
-                            <TableCell align="right" style={{ color: row.priceChange1h >= 0 ? 'green' : 'red' }}>
-                            
+                                <TableCell>
+                                    {row.marketCapRank}
+                                </TableCell>
+                                <TableCell>
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            textAlign: 'right',
+                                            alignItems: 'center',
+                                        }}
+                                    >
+                                    <Avatar alt={row.name} src={row.image} sx={{mr: 2}}/>
+                                        {row.name}
+                                    </Box>
+                                </TableCell>
+                                <TableCell align="right">{row.currentPrice}</TableCell>
+                                <TableCell align="right" style={{ color: row.priceChange1h >= 0 ? 'green' : 'red' }}>
                                     {row.priceChange1h}
-                                
-                            </TableCell>
-                            <TableCell align="right" style={{ color: row.priceChange24h >= 0 ? 'green' : 'red' }}>
-                            
+                                </TableCell>
+                                <TableCell align="right" style={{ color: row.priceChange24h >= 0 ? 'green' : 'red' }}>
                                     {row.priceChange24h}
-                                
-                            </TableCell>
-                            <TableCell align="right" style={{ color: row.priceChange30d >= 0 ? 'green' : 'red' }}>
-                            
+                                </TableCell>
+                                <TableCell align="right" style={{ color: row.priceChange30d >= 0 ? 'green' : 'red' }}>
                                     {row.priceChange30d}
-                                
-                            </TableCell>
-                            <TableCell align="right">{row.marketCap}</TableCell>
-                            <TableCell align="right">{row.circulatingSupply}</TableCell>
+                                </TableCell>
+                                <TableCell align="right">{row.marketCap}</TableCell>
+                                <TableCell align="right">{row.circulatingSupply}</TableCell>
                             </TableRow>
                     ))}
                     </TableBody>

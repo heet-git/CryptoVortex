@@ -55,6 +55,14 @@ function Home(){
             return () => clearInterval(intervalId)
         },[])
 
+    function addCommas(price){
+        const inFormat = parseFloat(price).toLocaleString('en-US',{
+            style: 'currency',
+            currency: 'USD'
+        })
+        return inFormat
+    }
+
     return(
         <Container maxWidth="xl" disableGutters>
             <Box
@@ -173,7 +181,7 @@ function Home(){
                 <Typography
                     variant="h3"
                     fontWeight={600}
-                    my={5}
+                    my={10}
                     sx={{textAlign: 'center'}}
                 >Trending  <TrendingUpTwoToneIcon fontSize="large"/>
                 </Typography>
@@ -187,7 +195,7 @@ function Home(){
                         <Card key={index}
                         variant="outlined"
                         sx={{
-                            maxWidth: "15%",
+                            maxWidth: "17%",
                             borderRadius: "10px",
                             boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
                         }}
@@ -231,11 +239,11 @@ function Home(){
                                         </Typography>
                                     </Box>
                                     <Typography variant="subtitle2">
-                                    Price: ${coin.current_price}
+                                    Price: {addCommas(coin.current_price)}
                                     </Typography>
 
                                     <Typography variant="subtitle2" noWrap>
-                                    Market cap: ${coin.market_cap}
+                                    Market cap: {addCommas(coin.market_cap)}
                                     </Typography>
                                     
                                 </CardContent>
