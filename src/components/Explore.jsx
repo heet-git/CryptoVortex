@@ -139,33 +139,31 @@ const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
             </Typography>
         </Box>
         <Box>
-            <Paper sx={{ width: '100%', mb: 2 }}>
+            <Paper sx={{ width: '100%'}}>
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
-                    <TableRow>
-                        <TableCell align="center">Rank</TableCell>
-                        <TableCell align="left" >Name</TableCell>
-                        <TableCell align="right">Current Price</TableCell>
-                        <TableCell align="right">1h</TableCell>
-                        <TableCell align="right">24h</TableCell>
-                        <TableCell align="right">30d</TableCell>
-                        <TableCell align="right">Market cap</TableCell>
-                        <TableCell align="right">Circulating supply</TableCell>
-                    </TableRow>
+                        <TableRow sx={{ '& > *': {fontWeight: '600'}}}>
+                            <TableCell>Rank</TableCell>
+                            <TableCell align="left" >Name</TableCell>
+                            <TableCell align="right">Current Price</TableCell>
+                            <TableCell align="right">1h</TableCell>
+                            <TableCell align="right">24h</TableCell>
+                            <TableCell align="right">30d</TableCell>
+                            <TableCell align="right">Market cap</TableCell>
+                            <TableCell align="right">Circulating supply</TableCell>
+                        </TableRow>
                     </TableHead>
-                    <TableBody>
+                    <TableBody sx={{ '& > *': {fontWeight: '600'}}}>
                         {rows.map((row) => (
                             <TableRow
-                            key={row.marketCapRank}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 }, '& > *': {
-                                padding: '1rem'
-                            } }}
+                                key={row.marketCapRank}
+                                sx={{  '& > *': {fontWeight: '600'}}}
                             >
-                            <TableCell align="center">
+                            <TableCell>
                                 {row.marketCapRank}
                             </TableCell>
-                            <TableCell align="">
+                            <TableCell>
                                 <Box
                                     sx={{
                                         display: "flex",
@@ -178,20 +176,20 @@ const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
                                 </Box>
                             </TableCell>
                             <TableCell align="right">{row.currentPrice}</TableCell>
-                            <TableCell align="right">
-                                <StyledText>
+                            <TableCell align="right" style={{ color: row.priceChange1h >= 0 ? 'green' : 'red' }}>
+                            
                                     {row.priceChange1h}
-                                </StyledText>
+                                
                             </TableCell>
-                            <TableCell align="right">
-                                <StyledText>
+                            <TableCell align="right" style={{ color: row.priceChange24h >= 0 ? 'green' : 'red' }}>
+                            
                                     {row.priceChange24h}
-                                </StyledText>
+                                
                             </TableCell>
-                            <TableCell align="right">
-                                <StyledText>
+                            <TableCell align="right" style={{ color: row.priceChange30d >= 0 ? 'green' : 'red' }}>
+                            
                                     {row.priceChange30d}
-                                </StyledText>
+                                
                             </TableCell>
                             <TableCell align="right">{row.marketCap}</TableCell>
                             <TableCell align="right">{row.circulatingSupply}</TableCell>

@@ -12,9 +12,6 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Avatar } from '@mui/material';
 
-
-const pages = ['Explore', 'Learn', 'News', 'About'];
-
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -86,13 +83,6 @@ function Navbar() {
                                     </Typography>
                                 </MenuItem>
                             </NavLink>
-                            <NavLink to="/Learn" onClick={handleCloseNavMenu}>
-                                <MenuItem>
-                                    <Typography textAlign="center" sx={{ color: 'black' }}>
-                                        Learn
-                                    </Typography>
-                                </MenuItem>
-                            </NavLink>
                             <NavLink to="/News" onClick={handleCloseNavMenu}>
                                 <MenuItem>
                                     <Typography textAlign="center" sx={{ color: 'black' }}>
@@ -144,13 +134,6 @@ function Navbar() {
                         <MenuItem>
                             <Typography textAlign="center" sx={{ color: 'black' }}>
                                 Explore
-                            </Typography>
-                        </MenuItem>
-                    </NavLink>
-                    <NavLink to="/Learn" onClick={handleCloseNavMenu}>
-                        <MenuItem>
-                            <Typography textAlign="center" sx={{ color: 'black' }}>
-                                Learn
                             </Typography>
                         </MenuItem>
                     </NavLink>
