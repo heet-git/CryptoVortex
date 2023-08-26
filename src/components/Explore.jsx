@@ -10,19 +10,50 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar'
-import styled from 'styled-components';
+import TablePagination from '@mui/material/TablePagination';
 import { getMarketdata, getCoins } from '../assets/Api'
 
-import TablePagination from '@mui/material/TablePagination';
-import Tooltip from '@mui/material/Tooltip';
+function removeExtra(value){
+        const shortValue = parseFloat(value).toFixed(2)
+        return shortValue
+    }
+
+function addCommas(price){
+        const inFormat = parseFloat(price).toLocaleString('en-US',{
+            style: 'currency',
+            currency: 'USD'
+        })
+        return inFormat
+    }
+
+function insertData (
+        marketCapRank, 
+        name, 
+        image, 
+        currentPrice, 
+        priceChange1h, 
+        priceChange24h, 
+        priceChange30d, 
+        marketCap, 
+        circulatingSupply
+    ){
+        return { 
+            marketCapRank, 
+            name, 
+            image, 
+            currentPrice, 
+            priceChange1h, 
+            priceChange24h, 
+            priceChange30d, 
+            marketCap, 
+            circulatingSupply 
+        }
+    }
 
 
 function Explore() {
     const [marketInfo, setMarketInfo] = useState([])
     const [cryptoData, setCryptoData] = useState([]) 
-
-    const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
     useEffect(()=> {
         const globalData = async () =>{
@@ -54,71 +85,32 @@ function Explore() {
         return () => clearInterval(intervalId)
     },[])
 
-    function removeExtra(value){
-        const shortValue = parseFloat(value).toFixed(2)
-        return shortValue
-    }
-
-    function addCommas(price){
-        const inFormat = parseFloat(price).toLocaleString('en-US',{
-            style: 'currency',
-            currency: 'USD'
-        })
-        return inFormat
-    }
-
-    function insertData (
-        marketCapRank, 
-        name, 
-        image, 
-        currentPrice, 
-        priceChange1h, 
-        priceChange24h, 
-        priceChange30d, 
-        marketCap, 
-        circulatingSupply
-    ){
-        return { 
-            marketCapRank, 
-            name, 
-            image, 
-            currentPrice, 
-            priceChange1h, 
-            priceChange24h, 
-            priceChange30d, 
-            marketCap, 
-            circulatingSupply 
-        }
-    }
-
     const rows = cryptoData.map(coin => {
         return insertData(
             coin.market_cap_rank,
             coin.name,
             coin.image,
             addCommas(coin.current_price),
-            addCommas(removeExtra(coin.price_change_percentage_1h_in_currency)),
-            addCommas(removeExtra(coin.price_change_percentage_24h_in_currency)),
-            addCommas(removeExtra(coin.price_change_percentage_30d_in_currency)),
+            removeExtra(coin.price_change_percentage_1h_in_currency),
+            removeExtra(coin.price_change_percentage_24h_in_currency),
+            removeExtra(coin.price_change_percentage_30d_in_currency),
             addCommas(coin.market_cap),
             addCommas(coin.circulating_supply)
         );
     });
+    
 
-    const handleChangePage = (event, newPage) => {
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+
+    const handlePageChange = (event, newPage) => {
         setPage(newPage);
     };
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 20));
+    const handleRowsPerPageChange = (event) => {
+        setRowsPerPage(parseInt(event.target.value));
         setPage(0);
     };
-
-   // Avoid a layout jump when reaching the last page with empty rows.
-    const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
-    const paginatedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
 
     return (
     <Container>
@@ -143,8 +135,14 @@ function Explore() {
             <Paper sx={{ width: '100%'}}>
             <TableContainer component={Paper}>
                 <Table>
-                    <TableHead>
-                        <TableRow>
+                    <TableHead >
+                        <TableRow
+                            sx={{
+                            "& th": {
+                            fontWeight: "600"
+                                }
+                            }}
+                        >
                             <TableCell>Rank</TableCell>
                             <TableCell align="left" >Name</TableCell>
                             <TableCell align="right">Current Price</TableCell>
@@ -156,10 +154,14 @@ function Explore() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
                             <TableRow
                                 key={row.marketCapRank}
-                                sx={{ '& > *': {fontWeight: '600'}}}
+                                sx={{
+                                    "& tb": {
+                                        fontWeight: "600"
+                                    }
+                                }}
                             >
                                 <TableCell>
                                     {row.marketCapRank}
@@ -177,14 +179,14 @@ function Explore() {
                                     </Box>
                                 </TableCell>
                                 <TableCell align="right">{row.currentPrice}</TableCell>
-                                <TableCell align="right" style={{ color: row.priceChange1h >= 0 ? 'green' : 'red' }}>
-                                    {row.priceChange1h}
+                                <TableCell align="right" style={{ color: (row.priceChange1h) > 0 ? 'green' : 'red' }}>
+                                    {addCommas(row.priceChange1h)}
                                 </TableCell>
-                                <TableCell align="right" style={{ color: row.priceChange24h >= 0 ? 'green' : 'red' }}>
-                                    {row.priceChange24h}
+                                <TableCell align="right" style={{ color: row.priceChange24h > 0 ? 'green' : 'red' }}>
+                                    {addCommas(row.priceChange24h)}
                                 </TableCell>
-                                <TableCell align="right" style={{ color: row.priceChange30d >= 0 ? 'green' : 'red' }}>
-                                    {row.priceChange30d}
+                                <TableCell align="right" style={{ color: row.priceChange30d > 0 ? 'green' : 'red' }}>
+                                    {addCommas(row.priceChange30d)}
                                 </TableCell>
                                 <TableCell align="right">{row.marketCap}</TableCell>
                                 <TableCell align="right">{row.circulatingSupply}</TableCell>
@@ -194,13 +196,13 @@ function Explore() {
                 </Table>
             </TableContainer>
             <TablePagination
-                rowsPerPageOptions={[20, 40, 100]}
+                rowsPerPageOptions={[10,20,30]}
                 component="div"
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
+                onPageChange={handlePageChange}
+                onRowsPerPageChange={handleRowsPerPageChange}
             />
             </Paper>
 
@@ -210,3 +212,6 @@ function Explore() {
 }
 
 export default Explore
+
+
+
