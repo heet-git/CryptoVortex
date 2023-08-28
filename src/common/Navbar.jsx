@@ -82,14 +82,14 @@ function Navbar() {
                                         </Typography>
                                     </MenuItem>
                                 </NavLink>
-                                <NavLink to="/News" onClick={handleCloseNavMenu}>
+                                <NavLink to="/news" onClick={handleCloseNavMenu}>
                                     <MenuItem>
                                         <Typography textAlign="center" sx={{ color: 'black' }}>
                                             News
                                         </Typography>
                                     </MenuItem>
                                 </NavLink>
-                                <NavLink to="/About" onClick={handleCloseNavMenu}>
+                                <NavLink to="/about" onClick={handleCloseNavMenu}>
                                     <MenuItem>
                                         <Typography textAlign="center" sx={{ color: 'black' }}>
                                             About
@@ -136,14 +136,14 @@ function Navbar() {
                                 </Typography>
                             </MenuItem>
                         </NavLink>
-                        <NavLink to="/News" onClick={handleCloseNavMenu}>
+                        <NavLink to="/news" onClick={handleCloseNavMenu}>
                             <MenuItem>
                                 <Typography textAlign="center" sx={{ color: 'black' }}>
                                     News
                                 </Typography>
                             </MenuItem>
                         </NavLink>
-                        <NavLink to="/About" onClick={handleCloseNavMenu}>
+                        <NavLink to="/about" onClick={handleCloseNavMenu}>
                             <MenuItem>
                                 <Typography textAlign="center" sx={{ color: 'black' }}>
                                     About

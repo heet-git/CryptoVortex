@@ -101,9 +101,9 @@ function Explore() {
     
 
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [rowsPerPage, setRowsPerPage] = useState(20);
 
-    const handlePageChange = (event, newPage) => {
+    const handlePageChange = (newPage) => {
         setPage(newPage);
     };
 
@@ -111,6 +111,8 @@ function Explore() {
         setRowsPerPage(parseInt(event.target.value));
         setPage(0);
     };
+
+    const marketData = (removeExtra(marketInfo?.data?.market_cap_change_percentage_24h_usd)) || 'N/A'
 
     return (
     <Container>
@@ -128,7 +130,8 @@ function Explore() {
                 variant='subtitle2'  
                 mt= {2}  
             >
-                The global Cryptocurrency is change by %
+                The global Cryptocurrency is change by {' '}
+                {marketData}%
             </Typography>
         </Box>
         <Box>
@@ -156,13 +159,7 @@ function Explore() {
                     <TableBody>
                             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
                             <TableRow
-                                key={row.marketCapRank}
-                                sx={{
-                                    "& tb": {
-                                        fontWeight: "600"
-                                    }
-                                }}
-                            >
+                                key={row.marketCapRank}>
                                 <TableCell>
                                     {row.marketCapRank}
                                 </TableCell>
@@ -179,13 +176,13 @@ function Explore() {
                                     </Box>
                                 </TableCell>
                                 <TableCell align="right">{row.currentPrice}</TableCell>
-                                <TableCell align="right" style={{ color: (row.priceChange1h) > 0 ? 'green' : 'red' }}>
+                                <TableCell align="right" style={{ color: (row.priceChange1h) > 0 ? '#15de02' : '#eb0202' }}>
                                     {addCommas(row.priceChange1h)}
                                 </TableCell>
-                                <TableCell align="right" style={{ color: row.priceChange24h > 0 ? 'green' : 'red' }}>
+                                <TableCell align="right" style={{ color: row.priceChange24h > 0 ? '#15de02' : '#eb0202' }}>
                                     {addCommas(row.priceChange24h)}
                                 </TableCell>
-                                <TableCell align="right" style={{ color: row.priceChange30d > 0 ? 'green' : 'red' }}>
+                                <TableCell align="right" style={{ color: row.priceChange30d > 0 ? '#15de02' : '#eb0202' }}>
                                     {addCommas(row.priceChange30d)}
                                 </TableCell>
                                 <TableCell align="right">{row.marketCap}</TableCell>
@@ -196,7 +193,7 @@ function Explore() {
                 </Table>
             </TableContainer>
             <TablePagination
-                rowsPerPageOptions={[10,20,30]}
+                rowsPerPageOptions={[20,30,50]}
                 component="div"
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
