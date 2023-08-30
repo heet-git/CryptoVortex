@@ -4,44 +4,19 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, CardActions, Container } from '@mui/material';
-
+import { useLoaderData } from 'react-router';
 
 import { cryptoNewsData } from '../assets/Api';
 
 function News() {
     const [cryptoNews, setCryptoNews] = useState([])
-
-    // useEffect(()=> {
-    //     const newsData = async () =>{
-    //         try {
-    //             const news = await cryptoNewsData()
-    //             setCryptoNews(news.results || [])
-    //         } catch(error){
-    //             console.log('Error fetching global market data:', error)
-    //         }
-    //     }
-    //     newsData()
-    // }, [])
-
-    // console.log(cryptoNews[0])
-
-    // const newsFeed = []
-    
-    // function getNews(){
-    //     for (let i = 0; i < 10; i++){
-    //         newsFeed.push(cryptoNews[i])
-    //         return newsFeed
-    //     }
-    // }
-
-
-        const [newsFeed, setNewsFeed] = useState([]);
+    const [newsFeed, setNewsFeed] = useState([]);
 
     useEffect(() => {
         const fetchCryptoNews = async () => {
             try {
                 const news = await cryptoNewsData();
-                setCryptoNews(news.results || []);
+                setCryptoNews(news);
             } catch (error) {
                 console.error('Error fetching news data:', error);
             }
@@ -61,14 +36,17 @@ function News() {
         }
     }, [cryptoNews])
 
-    console.log(newsFeed)
+    console.log(newsFeed.length)
 
+    // const newstest = newsFeed.map(news => {
+    //     return news.article_id
+    // } )
+
+    // console.log(newstest)
 
 return (
     <Container>
-    {/* {newsFeed.length === 0 ? (
-        <Typography>Loading...</Typography>
-    ) : (
+    {
         newsFeed.map((news, index) => (
         <Card key={index} sx={{ maxWidth: 345 }}>
         <CardActionArea>
@@ -92,12 +70,33 @@ return (
             More..
             </Button>
         </CardActions>
-        </Card> ))
-    )} */}
-    <Box>News</Box>
+        </Card> ))}
     </Container>
 );
-
 }
 
 export default News;
+
+
+    // useEffect(()=> {
+    //     const newsData = async () =>{
+    //         try {
+    //             const news = await cryptoNewsData()
+    //             setCryptoNews(news.results || [])
+    //         } catch(error){
+    //             console.log('Error fetching global market data:', error)
+    //         }
+    //     }
+    //     newsData()
+    // }, [])
+
+    // console.log(cryptoNews[0])
+
+    // const newsFeed = []
+    
+    // function getNews(){
+    //     for (let i = 0; i < 10; i++){
+    //         newsFeed.push(cryptoNews[i])
+    //         return newsFeed
+    //     }
+    // }

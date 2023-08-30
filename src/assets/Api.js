@@ -31,13 +31,16 @@
     const cryptoNewsUrl = 'https://newsdata.io/api/1/news?apikey=pub_28435bef511fe731b7803eb428ee813e64e4e&q=cryptocurrencies';
         
     async function cryptoNewsData() {
-        try {
-            const response = await fetch(cryptoNewsUrl);
-            const result = await response.json();
-            return result
-        } catch (error) {
-            throw error
-        }   
+        const response = await fetch(cryptoNewsUrl);
+        if (!response.ok){
+            throw new Error({
+                message: "failed to fetch crypto news",
+                statusText: response.statusText,
+                status: response.status,
+            });
+        }
+        const data = await response.json()
+        return data.results
     }
         
     export {getMarketdata, getCoins, cryptoNewsData}
