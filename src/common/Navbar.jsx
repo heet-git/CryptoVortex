@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Avatar } from '@mui/material';
+import logoImg from '/public/logo.png'
 
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -30,6 +31,7 @@ function Navbar() {
 
                     {/* Desktop View */}
                     <Box display="flex" alignItems="center">
+                    <Avatar src={logoImg}></Avatar>
                         <Typography
                             variant="h5"
                             noWrap

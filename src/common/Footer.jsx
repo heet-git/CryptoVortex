@@ -1,12 +1,13 @@
 import React from 'react';
 import { Box, Container, Stack, Typography } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button'; // Correct import
+import Button from '@mui/material/Button';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import RedditIcon from '@mui/icons-material/Reddit';
 import CopyrightIcon from '@mui/icons-material/Copyright';
+import logoImg from '/public/logo.png'
 
 function Footer() {
     return (
@@ -20,6 +21,7 @@ function Footer() {
                 >
                 <Box>
                     <Box display='flex' flexDirection='row' alignItems='center'>
+                    <Avatar src={logoImg}></Avatar>
                     <Typography
                         variant="h5"
                         noWrap
