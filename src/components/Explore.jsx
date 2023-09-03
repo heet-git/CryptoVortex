@@ -176,13 +176,13 @@ function Explore() {
                                     </Box>
                                 </TableCell>
                                 <TableCell align="right">{row.currentPrice}</TableCell>
-                                <TableCell align="right" style={{ color: (row.priceChange1h) > 0 ? '#15de02' : '#eb0202' }}>
+                                <TableCell align="right" style={{ color: (row.priceChange1h) > 0 ? '#12bf02' : '#eb0202' }}>
                                     {addCommas(row.priceChange1h)}
                                 </TableCell>
-                                <TableCell align="right" style={{ color: row.priceChange24h > 0 ? '#15de02' : '#eb0202' }}>
+                                <TableCell align="right" style={{ color: row.priceChange24h > 0 ? '#12bf02' : '#eb0202' }}>
                                     {addCommas(row.priceChange24h)}
                                 </TableCell>
-                                <TableCell align="right" style={{ color: row.priceChange30d > 0 ? '#15de02' : '#eb0202' }}>
+                                <TableCell align="right" style={{ color: row.priceChange30d > 0 ? '#12bf02' : '#eb0202' }}>
                                     {addCommas(row.priceChange30d)}
                                 </TableCell>
                                 <TableCell align="right">{row.marketCap}</TableCell>

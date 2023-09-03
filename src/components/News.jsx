@@ -5,9 +5,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, CardActions, Container } from '@mui/material';
 import logoImgBg from '/public/logo-bg-img.png'
-
 import { cryptoNewsData } from '../assets/Api';
-import { Center } from '@chakra-ui/react';
+
+import { useLoaderData } from 'react-router';
+
+function loader(){
+    return cryptoNewsData()
+}
 
 function News() {
     const [cryptoNews, setCryptoNews] = useState([])
@@ -51,10 +55,11 @@ return (
         </Box>
         <Box
             display="flex"
-            flexWrap="wrap"
+            justifyContent="center"
+            flexWrap="wrap"    
             sx={{
-                padding: "5",
-                maxHeight: "10%"
+                maxWidth: "100%",
+                padding: "0 auto"
             }}
         >
             {(cryptoNews.length === 0) ? (
@@ -67,13 +72,14 @@ return (
                             sx={{ 
                                 maxWidth: 300,
                                 p: 2,
-                                mx: 2,
+                                m: 2,
+                                boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.5)"
                             }}>
                         <CardActionArea>
                             <CardMedia
                             component="img"
                             height="140"
-                            image={(cryptoNews.image_url === null ? logoImgBg : news.image_url)}
+                            image={news.image_url}
                             alt="news image"
                             />
                             <CardContent>
