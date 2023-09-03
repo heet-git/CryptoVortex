@@ -7,15 +7,11 @@ import { Box, Button, CardActionArea, CardActions, Container } from '@mui/materi
 import logoImgBg from '/public/logo-bg-img.png'
 import { cryptoNewsData } from '../assets/Api';
 
-import { useLoaderData } from 'react-router';
-
-function loader(){
-    return cryptoNewsData()
-}
-
 function News() {
     const [cryptoNews, setCryptoNews] = useState([])
     const [newsFeed, setNewsFeed] = useState([]);
+
+    console.log(cryptoNews)
 
     useEffect(() => {
         const fetchCryptoNews = async () => {
@@ -92,7 +88,7 @@ return (
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button size="small" color="primary">
+                            <Button size="small">
                             More..
                             </Button>
                         </CardActions>

@@ -53,7 +53,7 @@ function insertData (
 
 function Explore() {
     const [marketInfo, setMarketInfo] = useState([])
-    const [cryptoData, setCryptoData] = useState([]) 
+    const [cryptoData, setCryptoData] = useState([])
 
     useEffect(()=> {
         const globalData = async () =>{

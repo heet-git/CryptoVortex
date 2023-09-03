@@ -1,9 +1,14 @@
-    const globalDataUrl = 'https://api.coingecko.com/api/v3/global'
-
-    const coinsMarketUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d%2C30d%2C1y&locale=en&precision=2'
+    const globalDataUrl = 'https://coingecko.p.rapidapi.com/global';
+    const globalDataOptions = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'c57e80cd26msh5898b169528186fp1f068fjsn8af7bd3d4369',
+		'X-RapidAPI-Host': 'coingecko.p.rapidapi.com'
+	}
+    };
 
     async function getMarketdata(){
-        const response = await fetch(globalDataUrl)
+        const response = await fetch(globalDataUrl, globalDataOptions)
         if (!response.ok){
             throw new Error({
                 message: "failed to fetch market data",
@@ -14,9 +19,18 @@
         const data = await response.json();
         return data
     }
+
+    const coinsMarketUrl = 'https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&price_change_percentage=1h%2C24h%2C7d%2C30d%2C1y&page=1&per_page=100&order=market_cap_desc';
+    const coinMarketOptions = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'c57e80cd26msh5898b169528186fp1f068fjsn8af7bd3d4369',
+		'X-RapidAPI-Host': 'coingecko.p.rapidapi.com'
+	}
+    };
     
     async function getCoins() {
-        const response = await fetch(coinsMarketUrl);
+        const response = await fetch(coinsMarketUrl, coinMarketOptions);
         if (!response.ok) {
             throw new Error({
                 message: "failed to fetch coins data",
