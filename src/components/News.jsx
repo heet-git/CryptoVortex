@@ -4,15 +4,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, CardActions, Container } from '@mui/material';
-import logoImgBg from '/public/logo-bg-img.png'
+import newsImg from '/public/news-img.png'
 import { cryptoNewsData } from '../assets/Api';
 
 function News() {
     const [cryptoNews, setCryptoNews] = useState([])
     const [newsFeed, setNewsFeed] = useState([]);
-
-    console.log(cryptoNews)
-
     useEffect(() => {
         const fetchCryptoNews = async () => {
             try {
@@ -35,16 +32,14 @@ function News() {
         }
     }, [cryptoNews])
 
-    // const newsImg = (cryptoNews.image_url === null ? logoImgBg : news.image_url)
-
 return (
     <Container maxWidth="xl" disableGutters>
         <Box>
             <Typography
                 variant='h4'
-                fontWeight={800}
+                fontWeight="800"
                 textAlign="center"
-                my={5}
+                my="15"
             >
                 Latest Global Crypto News
             </Typography>
@@ -55,7 +50,7 @@ return (
             flexWrap="wrap"    
             sx={{
                 maxWidth: "100%",
-                padding: "0 auto"
+                padding: "0 auto",
             }}
         >
             {(cryptoNews.length === 0) ? (
@@ -71,29 +66,42 @@ return (
                                 m: 2,
                                 boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.5)"
                             }}>
-                        <CardActionArea>
-                            <CardMedia
-                            component="img"
-                            height="140"
-                            image={news.image_url}
-                            alt="news image"
-                            />
-                            <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                {news.title}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {news.description}
-                            </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                            <Button size="small">
-                            More..
-                            </Button>
-                        </CardActions>
+                            <CardActionArea>
+                                <CardMedia
+                                component="img"
+                                height="140"
+                                width= "10"
+                                image={news.image_url ? news.image_url : newsImg}
+                                alt="news image"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="subtitle1"
+                                        sx={{
+                                            fontFamily: "lato",
+                                        }}
+                                    >
+                                        {news.title}
+                                    </Typography>
+                                    <Typography variant='caption'>
+                                        {news.creator} {news.pubDate}
+                                    </Typography>
+                                    <Box
+                                        sx={{
+                                            height:"200",
+                                            mt: "20px"    
+                                        }}
+                                    >
+                                        <Typography variant="body2" color="text.secondary">
+                                            {news.description.length > 100
+                                            ? `${news.description.substring(0, 100)}...`
+                                            : news.description}
+                                        <Button size="small" href={news.link} target='_blank' color='success'>Read more</Button>
+                                        </Typography>
+                                    </Box>
+                                </CardContent>
+                            </CardActionArea>
                         </Card> ))
-                    )}
+                )}
         </Box>
     </Container>
 );
