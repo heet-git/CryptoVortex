@@ -20,7 +20,7 @@
         return data
     }
 
-    const coinsMarketUrl = 'https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&price_change_percentage=1h%2C24h%2C7d%2C30d%2C1y&page=1&per_page=100&order=market_cap_desc';
+    const coinsMarketUrl = 'https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&price_change_percentage=1h%2C24h%2C7d%2C30d%2C1y&page=1&sparkline=true&per_page=100&order=market_cap_desc';
     const coinMarketOptions = {
 	method: 'GET',
 	headers: {

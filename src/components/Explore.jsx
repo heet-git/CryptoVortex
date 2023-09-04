@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { SparkLineChart } from '@mui/x-charts/SparkLineChart'
 import Avatar from '@mui/material/Avatar'
 import TablePagination from '@mui/material/TablePagination';
 import { getMarketdata, getCoins } from '../assets/Api'
@@ -35,7 +36,8 @@ function insertData (
         priceChange24h, 
         priceChange30d, 
         marketCap, 
-        circulatingSupply
+        circulatingSupply,
+        last7Days
     ){
         return { 
             marketCapRank, 
@@ -46,7 +48,8 @@ function insertData (
             priceChange24h, 
             priceChange30d, 
             marketCap, 
-            circulatingSupply 
+            circulatingSupply,
+            last7Days
         }
     }
 
@@ -54,6 +57,8 @@ function insertData (
 function Explore() {
     const [marketInfo, setMarketInfo] = useState([])
     const [cryptoData, setCryptoData] = useState([])
+
+   //console.log(cryptoData[0].sparkline_in_7d.price)
 
     useEffect(()=> {
         const globalData = async () =>{
@@ -95,7 +100,8 @@ function Explore() {
             removeExtra(coin.price_change_percentage_24h_in_currency),
             removeExtra(coin.price_change_percentage_30d_in_currency),
             addCommas(coin.market_cap),
-            addCommas(coin.circulating_supply)
+            addCommas(coin.circulating_supply),
+            coin.sparkline_in_7d.price
         );
     });
     
@@ -154,6 +160,7 @@ function Explore() {
                             <TableCell align="right">30d</TableCell>
                             <TableCell align="right">Market cap</TableCell>
                             <TableCell align="right">Circulating supply</TableCell>
+                            <TableCell align='center'>Last 7 days</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -187,6 +194,11 @@ function Explore() {
                                 </TableCell>
                                 <TableCell align="right">{row.marketCap}</TableCell>
                                 <TableCell align="right">{row.circulatingSupply}</TableCell>
+                                <TableCell align="right">
+                                    <Box>
+                                        <SparkLineChart data={row.last7Days} height={100} />
+                                    </Box>
+                                </TableCell>
                             </TableRow>
                     ))}
                     </TableBody>
