@@ -103,7 +103,7 @@ function Explore() {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(20);
 
-    const handlePageChange = (newPage) => {
+    const handlePageChange = (event, newPage) => {
         setPage(newPage);
     };
 

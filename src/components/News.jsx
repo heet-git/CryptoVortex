@@ -37,9 +37,9 @@ return (
         <Box>
             <Typography
                 variant='h4'
-                fontWeight="800"
+                fontWeight="600"
                 textAlign="center"
-                my="15"
+                my="5rem"
             >
                 Latest Global Crypto News
             </Typography>
