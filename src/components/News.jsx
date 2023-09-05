@@ -3,7 +3,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, Button, CardActionArea, CardActions, Container } from '@mui/material';
+import { Box, Button, CardActionArea, CardActions, Container} from '@mui/material';
+import Link from '@mui/material/Link';
 import newsImg from '/public/news-img.png'
 import { cryptoNewsData } from '../assets/Api';
 
@@ -66,7 +67,7 @@ return (
                                 m: 2,
                                 boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.5)"
                             }}>
-                            <CardActionArea>
+                            
                                 <CardMedia
                                 component="img"
                                 height="140"
@@ -78,6 +79,7 @@ return (
                                     <Typography gutterBottom variant="subtitle1"
                                         sx={{
                                             fontFamily: "lato",
+                                            fontWeight: "600"
                                         }}
                                     >
                                         {news.title}
@@ -93,13 +95,13 @@ return (
                                     >
                                         <Typography variant="body2" color="text.secondary">
                                             {news.description.length > 100
-                                            ? `${news.description.substring(0, 100)}...`
+                                            ? `${news.description.substring(0, 100)}... `
                                             : news.description}
-                                        <Button size="small" href={news.link} target='_blank' color='success'>Read more</Button>
+                                        <Link href={news.link} target='_blank' color="#4E4FEB" underline="hover">Read more</Link>
                                         </Typography>
                                     </Box>
                                 </CardContent>
-                            </CardActionArea>
+                            
                         </Card> ))
                 )}
         </Box>

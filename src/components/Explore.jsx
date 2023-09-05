@@ -13,6 +13,7 @@ import { SparkLineChart } from '@mui/x-charts/SparkLineChart'
 import Avatar from '@mui/material/Avatar'
 import TablePagination from '@mui/material/TablePagination';
 import { getMarketdata, getCoins } from '../assets/Api'
+import { Button } from '@mui/material';
 
 function removeExtra(value){
         const shortValue = parseFloat(value).toFixed(2)
@@ -121,9 +122,9 @@ function Explore() {
     const marketData = (removeExtra(marketInfo?.data?.market_cap_change_percentage_24h_usd)) || 'N/A'
 
     return (
-    <Container>
+    <Container disableGutters>
         <Box sx={{
-                    m: 10,
+                    m: "5rem",
                     textAlign: 'center',
                 }}>
             <Typography
@@ -144,23 +145,23 @@ function Explore() {
             <Paper sx={{ width: '100%'}}>
             <TableContainer component={Paper}>
                 <Table>
-                    <TableHead >
+                    <TableHead>
                         <TableRow
                             sx={{
                             "& th": {
-                            fontWeight: "600"
+                            fontWeight: "600",
                                 }
-                            }}
-                        >
+                            }}>
                             <TableCell>Rank</TableCell>
-                            <TableCell align="left" >Name</TableCell>
+                            <TableCell align="left" size='10px'>Name</TableCell>
                             <TableCell align="right">Current Price</TableCell>
                             <TableCell align="right">1h</TableCell>
                             <TableCell align="right">24h</TableCell>
                             <TableCell align="right">30d</TableCell>
                             <TableCell align="right">Market cap</TableCell>
                             <TableCell align="right">Circulating supply</TableCell>
-                            <TableCell align='center'>Last 7 days</TableCell>
+                            <TableCell align="center">Last 7 days</TableCell>
+                            <TableCell align="center">Trade</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -178,7 +179,7 @@ function Explore() {
                                             alignItems: 'center',
                                         }}
                                     >
-                                    <Avatar alt={row.name} src={row.image} sx={{mr: 2}}/>
+                                    <Avatar alt={row.name} src={row.image} sx={{mr: 1}}/>
                                         {row.name}
                                     </Box>
                                 </TableCell>
@@ -198,6 +199,9 @@ function Explore() {
                                     <Box>
                                         <SparkLineChart data={row.last7Days} height={100} />
                                     </Box>
+                                </TableCell>
+                                <TableCell>
+                                        <Button size="small" variant="contained">Trade</Button>
                                 </TableCell>
                             </TableRow>
                     ))}
