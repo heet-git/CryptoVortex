@@ -59,8 +59,6 @@ function Explore() {
     const [marketInfo, setMarketInfo] = useState([])
     const [cryptoData, setCryptoData] = useState([])
 
-   //console.log(cryptoData[0].sparkline_in_7d.price)
-
     useEffect(()=> {
         const globalData = async () =>{
             try {

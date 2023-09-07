@@ -27,5 +27,25 @@ const features = [
 ]
 
 
+const stats = [
+    {
+        number: '$1 billion',
+        description: 'Quarterly volume traded',
+    },
+    {
+        number: '20+',
+        description: 'Cryptocurrencies' ,
+    },
+    {
+        number: '1 million',
+        description: 'Registered users' ,
+    },
+    {
+        number: '<0.1%',
+        description: 'Lowest transaction fee',
+    },
+]
 
-export default features
+
+
+export {features, stats}

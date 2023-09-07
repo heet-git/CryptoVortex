@@ -14,27 +14,8 @@ import homeImgLight from "/public/home-img-light.jpg"
 import GoogleLogin from '/public/google-login.png'
 import AppleLogin from '/public/apple-login.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import features from "../data/features";
+import {features, stats} from "../data/data";
 import { getCoins } from "../assets/Api";
-
-const stats = [
-    {
-        number: '$1 billion',
-        description: 'Quarterly volume traded',
-    },
-    {
-        number: '20+',
-        description: 'Cryptocurrencies' ,
-    },
-    {
-        number: '1 million',
-        description: 'Registered users' ,
-    },
-    {
-        number: '<0.1%',
-        description: 'Lowest transaction fee',
-    },
-]
 
 function Home(){  
     
