@@ -1,8 +1,9 @@
 import React from 'react'
-import { Container, Box, Typography } from '@mui/material'
+import { Container, Box, Typography, Button } from '@mui/material'
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import aboutImg from "/public/about-img.jpg"
+import aboutCoins from "/public/about-coins.jpg"
 import { stats } from '../data/data';
 
 function About() {
@@ -34,7 +35,7 @@ function About() {
             px="3rem"
           >
 
-            <Typography variant="h4"
+            <Typography variant="h3"
               sx={{
                 fontWeight: "600"
               }}
@@ -101,6 +102,57 @@ function About() {
         </Box>
       </Box>
 
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{
+          my: "5rem",
+          px:"7rem",
+          height:"30em"
+        }}>
+
+        <Box
+          maxWidth="50%"
+        >
+          <Typography
+            variant="h3"
+          >
+              Start investing in future!
+          </Typography>
+
+          <Typography
+            variant="subtitle1"
+            fontSize="1.1rem"
+            lineHeight="1.7"
+            
+            pt="1rem"
+
+          >
+              Whether you're delving into the world of cryptocurrency for the first time or are a seasoned trader seeking enhanced tools, CryptoVortex is dedicated to meeting your needs. Join us on this exciting journey into the future of finance and discover the endless possibilities of the crypto realm.
+          </Typography>
+
+          <Button variant="contained" size="large" 
+            sx={{
+              backgroundColor:"#4E4FEB",
+              color: "#fff",
+              mt: 5,
+              paddingX: 10,
+              borderRadius: "25px"
+          }} >
+          Sign up
+          </Button>
+        </Box>
+        <Box
+          component="img"
+          src= {aboutCoins}
+          sx={{ 
+            height: "100%", 
+            boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.7)",
+            borderRadius: "10px"
+            }}
+        ></Box>
+      </Box>
     </Container>
   )
 }

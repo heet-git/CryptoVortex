@@ -85,8 +85,6 @@ function Home(){
                     <Button variant="contained" 
                         sx={{
                             m: 1,
-                            backgroundColor:'#4E4FEB', 
-                            color:'#fff',
                             boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)'
                             }}>
                     <AccountCircleIcon
