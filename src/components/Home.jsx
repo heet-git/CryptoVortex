@@ -58,7 +58,15 @@ function Home(){
                     justifyContent: "center",
                     padding: 5,
                     textAlign: "center",
-                    }}>
+                    
+                    // Mobile view styles
+                    "@media (max-width: 600px)": {
+                    backgroundImage: "none",
+                    minHeight: 300,
+                    padding: 2,
+                    },
+                }}
+                >
                 <div
                     style={{
                     flex: 1,
@@ -66,75 +74,104 @@ function Home(){
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
-                    }}>
-                <Typography
+                    }}
+                >
+                    <Typography
                     variant="h2"
                     sx={{
                         fontWeight: "600",
                         maxWidth: "lg",
-                        mb: 5
+                        mb: 5,
+                        
+                        // Mobile view styles
+                        "@media (max-width: 600px)": {
+                        fontSize: "24px",
+                        mb: 3,
+                        },
                     }}
-                >
-                    Dive into the CryptoVortex: 
+                    >
+                    Dive into the CryptoVortex:
+                    <br />
                     A Whirlwind of Trading Opportunities
-                </Typography>
-                
-                <Box 
+                    </Typography>
+                    
+                    <Box
                     sx={{
-                    }}>
-                    <Button variant="contained" 
+                        // Mobile view styles
+                        "@media (max-width: 600px)": {
+                        flexDirection: "column",
+                        },
+                    }}
+                    >
+                    <Button
+                        variant="contained"
                         sx={{
-                            m: 1,
-                            boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)'
-                            }}>
-                    <AccountCircleIcon
-                        sx={{
-                            mr:1
+                        m: 1,
+                        boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)'
                         }}
-                    />Sign up with Email</Button>
+                    >
+                        <AccountCircleIcon
+                        sx={{
+                            mr: 1
+                        }}
+                        />Sign up with Email
+                    </Button>
                     <Typography
                         variant="body1"
                         sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            fontWeight: 800
+                        display: 'flex',
+                        alignItems: 'center',
+                        fontWeight: 800
                         }}
-                        >
+                    >
                         <span
-                            style={{
+                        style={{
                             flexGrow: 1,
                             borderBottom: '1px solid #000',
                             marginRight: '8px',
-                            }}
+                        }}
                         ></span>
                         OR
                         <span
-                            style={{
+                        style={{
                             flexGrow: 1,
                             borderBottom: '1px solid #000',
                             marginLeft: '8px',
-                            }}
+                        }}
                         ></span>
-                        </Typography>
-                    <Stack direction="row" >
-                        <Button 
-                            variant="contained" 
-                            sx={{m: 1, mr: 3, backgroundColor: '#fff', boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)'}}>
-                            <img src={GoogleLogin} alt="Google Login" 
-                            style={{ height: '20px', marginRight: '5px'}}/> 
-                            Sign in with Google
+                    </Typography>
+                    <Stack direction="row">
+                        <Button
+                        variant="contained"
+                        sx={{
+                            m: 1,
+                            mr: 3,
+                            backgroundColor: '#fff',
+                            boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)',
+                        }}
+                        >
+                        <img src={GoogleLogin} alt="Google Login"
+                            style={{ height: '20px', marginRight: '5px' }} />
+                        Sign in with Google
                         </Button>
-                        <Button 
-                            variant="contained" 
-                            sx={{m: 1, ml: 3, backgroundColor: '#fff', boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)'}}>
-                            <img src={AppleLogin} alt="Apple Login" 
-                            style={{ height: '20px', marginRight: '5px'}} /> 
-                            Sign in with Apple
+                        <Button
+                        variant="contained"
+                        sx={{
+                            m: 1,
+                            ml: 3,
+                            backgroundColor: '#fff',
+                            boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)',
+                        }}
+                        >
+                        <img src={AppleLogin} alt="Apple Login"
+                            style={{ height: '20px', marginRight: '5px' }} />
+                        Sign in with Apple
                         </Button>
                     </Stack>
-                </Box>
+                    </Box>
                 </div>
             </Box>
+
 
             <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 
@@ -351,10 +388,9 @@ function Home(){
             </Box>
 
             {/* Mobile view */}
-            {/* <Box
-                component="img"
-                src={homeImgLight}
+            <Box
                 sx={{
+                    backgroundImage: `url(${homeImgLight})`,
                     width:"100%",
                     objectFit: "cover",
                     objectPosition: "center",
@@ -372,40 +408,10 @@ function Home(){
                     Dive into the CryptoVortex: 
                     A Whirlwind of Trading Opportunities
                 </Typography>
-            </Box>         */}
+            </Box>        
         </Container>
     )
 }
 
 export default Home
 
-
-
-//     const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d%2C30d%2C1y&locale=en&precision=2'
-    
-//     useEffect(() => {
-//         async function getCoins() {
-//             try {
-//                 const response = await fetch(url);
-//                 if (!response.ok) {
-//                     throw new Error({
-//                         message: "failed to fetch data",
-//                         statusText: response.statusText,
-//                         status: response.status,
-//                     });
-//                 }
-//             const data = await response.json();
-//             setCoins(data);
-//         } catch (error) {
-//             console.error('Error fetching data:', error);
-//         }
-//     }
-//     getCoins();
-//     const intervalId = setInterval(() => {
-//         getCoins();
-//     }, 5 * 60 * 1000);
-
-//     return () =>{
-//         clearInterval(intervalId)
-//     }
-// }, []);
