@@ -140,12 +140,18 @@ function Home(){
                         }}
                         ></span>
                     </Typography>
-                    <Stack direction="row">
+                    <Stack direction="row"
+                      sx={{
+                            // Mobile view styles
+                            "@media (max-width: 600px)": {
+                            flexDirection: "column",
+                            },
+                        }}
+                    >
                         <Button
                         variant="contained"
                         sx={{
                             m: 1,
-                            mr: 3,
                             backgroundColor: '#fff',
                             boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)',
                         }}
@@ -158,7 +164,6 @@ function Home(){
                         variant="contained"
                         sx={{
                             m: 1,
-                            ml: 3,
                             backgroundColor: '#fff',
                             boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.6)',
                         }}
@@ -179,26 +184,36 @@ function Home(){
                 sx={{
                     justifyContent:"space-evenly",
                     paddingY: 7,
-                    backgroundColor:'#4E4FEB'
+                    backgroundColor:'#4E4FEB',
+                    "@media (max-width: 600px)": {
+                        textAlign: "center",
+                    },
                 }}
             >
                 {stats.map((item, index) => (
-                    <Box key={index}>
+                    <Box key={index}
+                        sx={{
+                            "@media (max-width:600px)":{
+                                py: 2
+                            }
+                        }}>
                         <Typography variant="h4" fontWeight='500' color= '#fff'>{item.number}</Typography>
                         <Typography variant="body1" color= '#fff'>{item.description}</Typography>
                     </Box>
                 ))}
             </Stack>
-            <Box
-                sx={{
-                    p: 3,
-                }}
-            >
+            <Box>
                 <Typography
                     variant="h3"
-                    fontWeight={600}
-                    my={10}
-                    sx={{textAlign: 'center'}}
+                    fontWeight= "600"
+                    mt= "5rem"
+                    sx={{
+                        textAlign: 'center',
+                        "@media(max-width:600px)":{
+                            my: "2rem",
+                            fontSize: "2.5rem"
+                        }
+                    }}
                 >Trending  <TrendingUpTwoToneIcon fontSize="large"/>
                 </Typography>
             
@@ -206,12 +221,13 @@ function Home(){
                     direction={{ xs: 'column', sm: 'row' }} 
                     spacing={{ xs: 1, sm: 2}}
                     justifyContent= "space-evenly"
+                    p={10}
                 >    
                     {coins.slice(0, 5).map((coin, index) => (
                         <Card key={index}
                         variant="outlined"
                         sx={{
-                            maxWidth: "17%",
+                            maxWidth: "100%",
                             borderRadius: "10px",
                             boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
                         }}
@@ -273,13 +289,12 @@ function Home(){
             <Box
             sx={{
                 textAlign: 'center',
-                p: 3,
-                my: 5
             }}
             >
                 <Typography
                     variant="h3"
                     fontWeight={600}
+                    mt= "5rem"
                 > A crypto exchange you can trust
                 <VerifiedIcon sx={{ml: 1, fontSize: '2rem'}}/>
                 </Typography>
@@ -288,7 +303,7 @@ function Home(){
                     {features.map((item, index) => (
                         <Box key={index}
                             sx={{
-                                mt: 3,
+                                mt: 5,
                                 p: 3,
                             }}>
                             <img 

@@ -74,41 +74,47 @@ function Navbar() {
                             onClose={handleCloseNavMenu}
                             sx={{
                                 display: { xs: "block", md: "none" },
-                                justifyContent: 'center',
+                                justifyContent: "center"
                                 }}>
                                 <NavLink to="/explore" onClick={handleCloseNavMenu}>
                                     <MenuItem>
-                                        <Typography textAlign="center" sx={{ color: 'black' }}>
+                                        <Typography sx={{ color: 'black' }}>
                                             Explore
                                         </Typography>
                                     </MenuItem>
                                 </NavLink>
                                 <NavLink to="/news" onClick={handleCloseNavMenu}>
                                     <MenuItem>
-                                        <Typography textAlign="center" sx={{ color: 'black' }}>
+                                        <Typography sx={{ color: 'black' }}>
                                             News
                                         </Typography>
                                     </MenuItem>
                                 </NavLink>
                                 <NavLink to="/about" onClick={handleCloseNavMenu}>
                                     <MenuItem>
-                                        <Typography textAlign="center" sx={{ color: 'black' }}>
+                                        <Typography sx={{ color: 'black' }}>
                                             About
                                         </Typography>
                                     </MenuItem>
                                 </NavLink>
                             <MenuItem onClick={handleCloseNavMenu}>
-                                <Button variant="outlined">
-                                    Sign inn</Button>
+                                <Button 
+                                    variant="outlined" 
+                                    sx={{ 
+                                        color: "black",
+                                        fontSize: "1rem"
+                                        }}>
+                                    Sign in</Button>
                             </MenuItem>
                             <MenuItem onClick={handleCloseNavMenu}>
                                 <Button 
                                     variant='contained'
                                     sx={{
-                                    backgroundColor: "#4E4FEB",
-                                    color: "#fff"
-                                    }}
-                                    >
+                                        backgroundColor: "#4E4FEB",
+                                        color: "#fff",
+                                        fontSize: "1rem",
+                                        borderRadius: "20px"
+                                        }}>
                                     Get started</Button>
                             </MenuItem>
                         </Menu>
