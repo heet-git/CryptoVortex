@@ -29,9 +29,8 @@ function Navbar() {
             <Container maxWidth="xl" >
                 <Toolbar disableGutters>
 
-                    {/* Desktop View */}
                     <Box display="flex" alignItems="center">
-                    <Avatar src={logoImg}></Avatar>
+                        
                         <Typography
                             variant="h5"
                             noWrap
@@ -45,12 +44,13 @@ function Navbar() {
                                 textDecoration: "none",
                                 color: '#4E4FEB'
                             }}
-                            > CryptoVortex
+                            > 
+                            <Avatar src={logoImg}></Avatar>
+                            CryptoVortex
                         </Typography>
                     </Box>
-                    {/* Mobile View */}
 
-                    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, padding: 0, margin: 0}}>
+                    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, p: 0, m: 0}}>
                         <IconButton
                             size="small"
                             aria-haspopup="true"
@@ -73,10 +73,9 @@ function Navbar() {
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                             sx={{
-                            display: { xs: "block", md: "none" },
-                            justifyContent: 'center',
-                            }}
-                            >
+                                display: { xs: "block", md: "none" },
+                                justifyContent: 'center',
+                                }}>
                                 <NavLink to="/explore" onClick={handleCloseNavMenu}>
                                     <MenuItem>
                                         <Typography textAlign="center" sx={{ color: 'black' }}>
@@ -99,22 +98,24 @@ function Navbar() {
                                     </MenuItem>
                                 </NavLink>
                             <MenuItem onClick={handleCloseNavMenu}>
-                                <Button variant='text' sx={{color:'black'}}>Sign in</Button>
+                                <Button variant="outlined">
+                                    Sign inn</Button>
                             </MenuItem>
                             <MenuItem onClick={handleCloseNavMenu}>
                                 <Button 
-                                variant="contained" 
-                                sx={{
+                                    variant='contained'
+                                    sx={{
                                     backgroundColor: "#4E4FEB",
                                     color: "#fff"
-                                }}
-                                >Get started</Button>
+                                    }}
+                                    >
+                                    Get started</Button>
                             </MenuItem>
                         </Menu>
                     </Box>
                 
                     <Typography
-                        variant="h6"
+                        variant="h5"
                         noWrap
                         component="a"
                         href="/"
@@ -123,31 +124,41 @@ function Navbar() {
                             display: { xs: "flex", md: "none" },
                             alignItems:"center",
                             flexGrow: 1,
-                            fontWeight: 600,
-                            color: "black",
+                            fontWeight: 700,
+                            color: '#4E4FEB',
                             textDecoration: "none",
                         }}
                     >
-                        CryptoVortex
+                        <Avatar src={logoImg}></Avatar>CryptoVortex
                     </Typography>
+
                     <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent: 'center'}}>
                         <NavLink to="/explore" onClick={handleCloseNavMenu}>
                             <MenuItem>
-                                <Typography textAlign="center" sx={{ color: 'black' }}>
+                                <Typography
+                                    variant="subtitle1"
+                                    textAlign="center" 
+                                    sx={{ color: 'black' }}>
                                     Explore
                                 </Typography>
                             </MenuItem>
                         </NavLink>
                         <NavLink to="/news" onClick={handleCloseNavMenu}>
                             <MenuItem>
-                                <Typography textAlign="center" sx={{ color: 'black' }}>
+                                <Typography
+                                    variant="subtitle1"
+                                    textAlign="center" 
+                                    sx={{ color: 'black' }}>
                                     News
                                 </Typography>
                             </MenuItem>
                         </NavLink>
                         <NavLink to="/about" onClick={handleCloseNavMenu}>
                             <MenuItem>
-                                <Typography textAlign="center" sx={{ color: 'black' }}>
+                                <Typography
+                                    variant="subtitle1"
+                                    textAlign="center" 
+                                    sx={{ color: 'black' }}>
                                     About
                                 </Typography>
                             </MenuItem>

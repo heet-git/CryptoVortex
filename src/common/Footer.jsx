@@ -16,27 +16,27 @@ function Footer() {
                 display='flex' 
                 justifyContent='space-between'
                 sx={{
-                    paddingY: 10
+                    py: 10
                 }}
                 >
                 <Box>
                     <Box display='flex' flexDirection='row' alignItems='center'>
-                    <Avatar src={logoImg}></Avatar>
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "none", md: "flex" },
-                            alignItems: "center",
-                            fontWeight: 700,
-                            textDecoration: "none",
-                            color: '#4E4FEB',
-                        }}
-                        > CryptoVortex
-                    </Typography>
+                        <Avatar src={logoImg}></Avatar>
+                        <Typography
+                            variant="h5"
+                            noWrap
+                            component="a"
+                            href="/"
+                            sx={{
+                                mr: 2,
+                                display: { xs: "none", md: "flex" },
+                                alignItems: "center",
+                                fontWeight: 700,
+                                textDecoration: "none",
+                                color: '#4E4FEB',
+                            }}
+                            > CryptoVortex
+                        </Typography>
                     </Box>
                     <Typography 
                         variant='subtitle2' 
