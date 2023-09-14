@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import Divider from '@mui/material/Divider';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -45,7 +46,15 @@ function Home(){
     }
 
     return(
-        <Container maxWidth="xl" disableGutters>
+        <Container 
+            fixed
+            disableGutters
+            sx={{
+                "@media (min-width:600px)":{
+                    maxWidth: "xl" 
+                }
+            }}
+            >
             <Box
                 sx={{
                     backgroundImage: `url(${homeImgLight})`,
@@ -61,10 +70,9 @@ function Home(){
                     
                     // Mobile view styles
                     "@media (max-width: 600px)": {
-                    backgroundImage: "none",
-                    minHeight: 300,
-                    padding: 2,
-                    },
+                        backgroundImage: "none",
+                        minHeight: 300,
+                        },
                 }}
                 >
                 <div
@@ -85,8 +93,8 @@ function Home(){
                         
                         // Mobile view styles
                         "@media (max-width: 600px)": {
-                        fontSize: "24px",
-                        mb: 3,
+                            my: "1.5rem",
+                            fontSize: "2.5rem"
                         },
                     }}
                     >
@@ -99,7 +107,8 @@ function Home(){
                     sx={{
                         // Mobile view styles
                         "@media (max-width: 600px)": {
-                        flexDirection: "column",
+                            flexDirection: "column",
+                            m: "3rem",
                         },
                     }}
                     >
@@ -112,16 +121,16 @@ function Home(){
                     >
                         <AccountCircleIcon
                         sx={{
-                            mr: 1
+                            mr: "0.5rem"
                         }}
                         />Sign up with Email
                     </Button>
                     <Typography
                         variant="body1"
                         sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        fontWeight: 800
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontWeight: 800
                         }}
                     >
                         <span
@@ -141,7 +150,7 @@ function Home(){
                         ></span>
                     </Typography>
                     <Stack direction="row"
-                      sx={{
+                        sx={{
                             // Mobile view styles
                             "@media (max-width: 600px)": {
                             flexDirection: "column",
@@ -181,6 +190,7 @@ function Home(){
             <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 
                 spacing={{ xs: 1, sm: 2, md: 4 }}
+                divider={<Divider orientation="vertical" flexItem />}
                 sx={{
                     justifyContent:"space-evenly",
                     paddingY: 7,
@@ -210,7 +220,7 @@ function Home(){
                     sx={{
                         textAlign: 'center',
                         "@media(max-width:600px)":{
-                            my: "2rem",
+                            my: "3rem",
                             fontSize: "2.5rem"
                         }
                     }}
@@ -221,7 +231,13 @@ function Home(){
                     direction={{ xs: 'column', sm: 'row' }} 
                     spacing={{ xs: 1, sm: 2}}
                     justifyContent= "space-evenly"
-                    p={10}
+                    m= "5rem"
+                    sx={{
+                        "@media (max-width: 600px)":{
+                            m: "4rem",
+                            mt: "2rem"
+                        }
+                    }}
                 >    
                     {coins.slice(0, 5).map((coin, index) => (
                         <Card key={index}
@@ -243,8 +259,13 @@ function Home(){
                                 sx={{ 
                                     display: 'flex', 
                                     justifyContent: 'center', 
-                                    marginTop: 2,
-                                    padding: 4
+                                    marginTop: "1rem",
+                                    padding: "2rem",
+                                    "@media (max-width: 600px)":{
+                                        width: "40%",
+                                        p: "1rem",
+                                        margin: "auto"
+                                        }
                                     }}
                                 >
                                 <CardMedia 
@@ -252,7 +273,7 @@ function Home(){
                                     image={coin.image} 
                                     alt={coin.name} 
                                     sx={{ 
-                                        borderRadius: "10px"
+                                        borderRadius: "10px",
                                     }}
                                     />
                                 </Box>
@@ -263,7 +284,8 @@ function Home(){
                                         </Typography>
                                         <Typography 
                                             variant="overline"
-                                            sx={{ml: 1,
+                                            sx={{
+                                                ml: 1,
                                                 textTransform: "uppercase",
                                             }}
                                         >
@@ -293,18 +315,42 @@ function Home(){
             >
                 <Typography
                     variant="h3"
-                    fontWeight={600}
+                    fontWeight="600"
                     mt= "5rem"
+                    sx={{
+                        "@media(max-width:600px)":{
+                            m: "3rem",
+                            fontSize: "2rem"
+                        }
+                    }}  
                 > A crypto exchange you can trust
-                <VerifiedIcon sx={{ml: 1, fontSize: '2rem'}}/>
+                <VerifiedIcon 
+                    sx={{
+                        ml: 1, 
+                        fontSize: '2rem',
+                        "@media (max-width:600px)":{
+                            fontSize: '1.5rem',
+                        }
+                        }}/>
                 </Typography>
 
-                <Stack direction="row">
+                <Stack 
+                    direction="row"
+                    sx={{
+                        "@media (max-width:600px)":{
+                            flexDirection: "column",
+                            m: 6
+                        }
+                    }}>
                     {features.map((item, index) => (
                         <Box key={index}
                             sx={{
                                 mt: 5,
                                 p: 3,
+                                "@media (max-width:600px)":{
+                                    my:2,
+                                    p:0
+                                }
                             }}>
                             <img 
                                 src={item.featureImg}
@@ -328,9 +374,29 @@ function Home(){
                 </Stack>  
             </Box>
             
-            <Box display="flex" justifyContent='space-evenly' alignItems="flex-start" p={2} backgroundColor='#f5f5f5'>
+            <Box 
+                display="flex" 
+                justifyContent='space-evenly' 
+                alignItems="flex-start" 
+                p={2} 
+                backgroundColor='#f5f5f5'
+                sx={{
+                    "@media (max-width:600px)":{
+                        flexDirection: "column",
+                        p: 5
+                    }
+                }}>
                 <Stack maxWidth= "35rem">
-                    <Typography variant="h3" fontWeight={600} mb={5}>
+                    <Typography 
+                        variant="h3" 
+                        fontWeight={600} 
+                        mb={5}
+                        sx={{
+                            "@media (max-width:600px)":{
+                                fontSize:"2rem",
+                                textAlign: "center"
+                            }
+                        }}>
                         Start trading today!
                     </Typography>
                     <Box display="flex" flexDirection="column">
@@ -394,36 +460,18 @@ function Home(){
                         </Box>
                     </Box>
                 </Stack>
-                <Box>
+                <Box
+                sx={{
+                    "@media (max-width:600px)":{
+                        margin: "auto"
+                    }
+                }}>
                     <img src="/mobile-view.png" alt="Mobile view"
                         style={{maxHeight: "30rem", borderRadius: "20px",
                         boxShadow: "0px 0px 40px 0px rgba(0, 0, 0, 0.6)"}}
                     />            
                 </Box>
-            </Box>
-
-            {/* Mobile view */}
-            <Box
-                sx={{
-                    backgroundImage: `url(${homeImgLight})`,
-                    width:"100%",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                    height: 500,
-                    display:{md: "none", xs: "flex"}
-                    }}
-            >
-                <Typography
-                    variant="h3"
-                    sx={{
-                        fontWeight: "600",
-                        maxWidth: "lg"
-                    }}
-                >
-                    Dive into the CryptoVortex: 
-                    A Whirlwind of Trading Opportunities
-                </Typography>
-            </Box>        
+            </Box>    
         </Container>
     )
 }

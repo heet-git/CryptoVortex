@@ -126,10 +126,9 @@ function Navbar() {
                         component="a"
                         href="/"
                         sx={{
-                            mr:2,
                             display: { xs: "flex", md: "none" },
-                            alignItems:"center",
-                            flexGrow: 1,
+                            textAlign:"center",
+                            flexGrow: 1.5,
                             fontWeight: 700,
                             color: '#4E4FEB',
                             textDecoration: "none",
