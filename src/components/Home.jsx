@@ -189,24 +189,17 @@ function Home(){
 
             <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 
-                spacing={{ xs: 1, sm: 2, md: 4 }}
+                spacing={{ xs: 2, md: 4 }}
                 divider={<Divider orientation="vertical" flexItem />}
                 sx={{
                     justifyContent:"space-evenly",
                     paddingY: 7,
                     backgroundColor:'#4E4FEB',
-                    "@media (max-width: 600px)": {
-                        textAlign: "center",
-                    },
+                    textAlign: {xs: "center", md: ""},
                 }}
             >
                 {stats.map((item, index) => (
-                    <Box key={index}
-                        sx={{
-                            "@media (max-width:600px)":{
-                                py: 2
-                            }
-                        }}>
+                    <Box key={index}>
                         <Typography variant="h4" fontWeight='500' color= '#fff'>{item.number}</Typography>
                         <Typography variant="body1" color= '#fff'>{item.description}</Typography>
                     </Box>

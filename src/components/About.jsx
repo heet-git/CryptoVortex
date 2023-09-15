@@ -5,19 +5,26 @@ import Divider from '@mui/material/Divider';
 import aboutImg from "/public/about-img.jpg"
 import aboutCoins from "/public/about-coins.jpg"
 import { stats } from '../data/data';
+import { border } from '@chakra-ui/react';
 
 function About() {
   return (
-    <Container 
-      disableGutters 
-      maxWidth= {{xs: "xs", md: "xl"}}>
+    <Container
+      maxWidth="xl" 
+      disableGutters
+      sx={{
+        "@media (max-width: 600px)": {
+          maxWidth: "xs"
+        }
+      }}
+      >
       <Box
         display="flex"
         alignItems="center"
         sx={{
-          my: "5rem",
-          px:"7rem",
-          height: {xs: "25em", md: "50em"}
+          my: {xs: "5rem", md: "5rem"},
+          px: {xs: "0", md: "7rem"},
+          height: {xs: "auto", md: "50em"},
         }}>
 
         <Box
@@ -40,45 +47,51 @@ function About() {
 
             <Typography variant="h3"
               sx={{
-                fontWeight: "600"
+                fontWeight: "600",
+                "@media (max-width: 600px)":{
+                  fontSize: "2rem",
+                  flexWrap: "nowrap",
+                  textAlign: "center"
+                }
               }}
             >
               About CryptoVortex
             </Typography>
 
             <Typography
-              fontSize="1.1rem"
+              fontSize={{xs: "1rem", md: "1.1rem"}}
               lineHeight="1.7"
               textAlign="center"
-              pt="1rem"
+              mt="1rem"
             >
               In a rapidly evolving digital landscape, cryptocurrency has emerged as the future of finance. At CryptoVortex, we understand the intricate tapestry of blockchain technology and the potential of decentralized finance. Our mission? To provide a seamless and secure trading platform that empowers both novice and experienced traders.
             </Typography>
 
         </Box>
       </Box>
-
+                {/* {{xs: "", md: ""}} */}
       <Box
         sx={{
           backgroundColor: "#F5F5F5",
-          px: "7rem",
-          py: "5rem"
+          px: {xs: "3rem", md: "7rem"},
+          py: {xs: "5rem", md: "5rem"}
         }}
         >
           <Box
-            display="flex"
-          >
+            display= {{xs: "block", md: "flex"}}
+            textAlign= "center">
             <Typography
-              variant="h3"
-            >
+              variant= "h3"
+              fontSize={{xs: "2rem"}}>
                 CryptoVortex helps customers to make right choice
             </Typography>
             <Typography
               variant="subtitle1"
               sx={{
-                maxWidth:"30%",
-                pl: "2rem",
-                fontSize:"1.1rem",
+                maxWidth: {xs: "100%", md: "30%"},
+                pl: {xs: "0", md: "2rem"},
+                mt: {xs: "1rem", md: "0"},
+                fontSize: {xs: "1rem", md: "1.1rem"},
                 lineHeight:"1.7"
               }}
             >
@@ -88,11 +101,12 @@ function About() {
           <Box>
             <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 
-                spacing={{ xs: 1, sm: 2, md: 4 }}
+                spacing={{ xs: 2, md: 4 }}
                 divider={<Divider orientation="vertical" flexItem />}
                 sx={{
                     justifyContent:"space-between",
                     pt: 7,
+                    textAlign: {xs: "center", md: ""}
                 }}
             >
                 {stats.map((item, index) => (
@@ -106,13 +120,13 @@ function About() {
       </Box>
 
       <Box
-        display="flex"
+        display= {{xs: "block", md: "flex"}}
         alignItems="center"
         justifyContent="space-between"
         sx={{
           my: "5rem",
           px:"7rem",
-          height:"30em"
+          height:{xs: "auto", md: "30em"}
         }}>
 
         <Box
