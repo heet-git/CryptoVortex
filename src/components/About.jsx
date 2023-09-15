@@ -8,20 +8,23 @@ import { stats } from '../data/data';
 
 function About() {
   return (
-    <Container disableGutters maxWidth="xl">
+    <Container 
+      disableGutters 
+      maxWidth= {{xs: "xs", md: "xl"}}>
       <Box
         display="flex"
         alignItems="center"
         sx={{
           my: "5rem",
           px:"7rem",
-          height:"50em"
+          height: {xs: "25em", md: "50em"}
         }}>
 
         <Box
           component="img"
           src= {aboutImg}
-          sx={{ 
+          sx={{
+            display: {xs: 'none', sm: "flex"}, 
             height: "100%", 
             boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.7)",
             borderRadius: "10px"

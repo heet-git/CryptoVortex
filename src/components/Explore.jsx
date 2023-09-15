@@ -200,7 +200,19 @@ function Explore() {
                                     </Box>
                                 </TableCell>
                                 <TableCell>
-                                        <Button size="small" variant="contained">Trade</Button>
+                                        <Button 
+                                            size="small" 
+                                            variant="contained" 
+                                            sx={{
+                                                borderRadius: "20px",
+                                                px: 3,
+                                                ":hover":{
+                                                    backgroundColor: "#4E4FEB",
+                                                    color: "#fff"
+                                                }
+                                                }}>
+                                            Trade
+                                        </Button>
                                 </TableCell>
                             </TableRow>
                     ))}
