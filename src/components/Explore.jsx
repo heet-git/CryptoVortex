@@ -122,7 +122,7 @@ function Explore() {
     return (
     <Container disableGutters>
         <Box sx={{
-                    m: "5rem",
+                    m: {xs: "2rem" , md: "5rem"},
                     textAlign: 'center',
                 }}>
             <Typography
@@ -142,6 +142,7 @@ function Explore() {
         <Box>
             <Paper sx={{ width: '100%'}}>
             <TableContainer component={Paper}>
+                {window.innerWidth > 600 ?
                 <Table>
                     <TableHead>
                         <TableRow
@@ -178,7 +179,7 @@ function Explore() {
                                         }}
                                     >
                                     <Avatar alt={row.name} src={row.image} sx={{mr: 1}}/>
-                                        {row.name}
+                                    <Box textAlign={"left"}>{row.name}</Box> 
                                     </Box>
                                 </TableCell>
                                 <TableCell align="right">{row.currentPrice}</TableCell>
@@ -204,8 +205,53 @@ function Explore() {
                             </TableRow>
                     ))}
                     </TableBody>
+                </Table> 
+                
+                    : 
+                // Mobile style view 
+                <Box px={1}>
+                <Table>
+                    <TableHead>
+                        <TableRow
+                            sx={{
+                            "& th": {
+                            fontWeight: "600",
+                                }
+                            }}>
+                            <TableCell align="left" size='10px'>Name</TableCell>
+                            <TableCell align="center">Last 7 days</TableCell>
+                            <TableCell align="right">Current Price</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+                            <TableRow
+                                key={row.marketCapRank}>
+                                <TableCell>
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            textAlign: 'right',
+                                            alignItems: 'center',
+                                        }}
+                                    >
+                                    <Avatar alt={row.name} src={row.image} sx={{mr: 1}}/>
+                                    <Box textAlign={"left"}>{row.name}</Box>     
+                                    </Box>
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Box width="5rem">
+                                        <SparkLineChart data={row.last7Days} height={100} />
+                                    </Box>
+                                </TableCell>
+                                <TableCell align="right">{row.currentPrice}</TableCell>
+                            </TableRow>
+                    ))}
+                    </TableBody>
                 </Table>
-            </TableContainer>
+                </Box>
+            }
+            </TableContainer> 
             <TablePagination
                 rowsPerPageOptions={[20,30,50]}
                 component="div"

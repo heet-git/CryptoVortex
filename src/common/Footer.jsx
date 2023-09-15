@@ -16,7 +16,7 @@ function Footer() {
                 display='flex'
                 flexDirection={{ xs: 'column', md: 'row' }}
                 justifyContent={{ xs: 'flex-start', md: 'space-between' }}
-                py={{ xs: 4, md: 10 }}
+                py={{ xs: 5, md: 10 }}
                 px={{ xs: 3, md: 0}}
             >
                 <Box>
