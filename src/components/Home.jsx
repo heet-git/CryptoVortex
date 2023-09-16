@@ -47,13 +47,14 @@ function Home(){
 
     return(
         <Container 
-            fixed
+            maxWidth="xl" 
             disableGutters
             sx={{
-                "@media (min-width:600px)":{
-                    maxWidth: "xl" 
-                }
-            }}
+            "@media (max-width: 600px)": {
+            maxWidth: "xs"
+            }
+        }}
+            
             >
             <Box
                 sx={{
