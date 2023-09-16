@@ -57,22 +57,16 @@ function Home(){
             >
             <Box
                 sx={{
-                    backgroundImage: `url(${homeImgLight})`,
+                    backgroundImage: {xs: "none", md: `url(${homeImgLight})`},
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    minHeight: 550,
+                    minHeight: {xs: "300", md: "550"},
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
                     padding: 5,
-                    textAlign: "center",
-                    
-                    // Mobile view styles
-                    "@media (max-width: 600px)": {
-                        backgroundImage: "none",
-                        minHeight: 300,
-                        },
+                    textAlign: "center"
                 }}
                 >
                 <div
@@ -91,7 +85,6 @@ function Home(){
                         maxWidth: "lg",
                         mb: 5,
                         
-                        // Mobile view styles
                         "@media (max-width: 600px)": {
                             my: "1.5rem",
                             fontSize: "2.5rem"
@@ -105,7 +98,6 @@ function Home(){
                     
                     <Box
                     sx={{
-                        // Mobile view styles
                         "@media (max-width: 600px)": {
                             flexDirection: "column",
                             m: "3rem",
@@ -224,13 +216,8 @@ function Home(){
                     direction={{ xs: 'column', sm: 'row' }} 
                     spacing={{ xs: 1, sm: 2}}
                     justifyContent= "space-evenly"
-                    m= "5rem"
-                    sx={{
-                        "@media (max-width: 600px)":{
-                            m: "4rem",
-                            mt: "2rem"
-                        }
-                    }}
+                    m= {{xs: "4rem", md: "5rem"}}
+                    mt= {{xs: "2rem"}}
                 >    
                     {coins.slice(0, 5).map((coin, index) => (
                         <Card key={index}
@@ -320,10 +307,7 @@ function Home(){
                 <VerifiedIcon 
                     sx={{
                         ml: 1, 
-                        fontSize: '2rem',
-                        "@media (max-width:600px)":{
-                            fontSize: '1.5rem',
-                        }
+                        fontSize: {xs: "1.5rem", md: "2rem"}
                         }}/>
                 </Typography>
 
@@ -371,12 +355,12 @@ function Home(){
                 display="flex" 
                 justifyContent='space-evenly' 
                 alignItems="flex-start" 
-                p={2} 
+                p= "1rem" 
                 backgroundColor='#f5f5f5'
                 sx={{
                     "@media (max-width:600px)":{
                         flexDirection: "column",
-                        p: 5
+                        p: "2.5rem"
                     }
                 }}>
                 <Stack maxWidth= "35rem">
@@ -398,9 +382,9 @@ function Home(){
                             src="/verify-user.png"
                             alt="verification"
                             style={{
-                            width: "3.5rem",
-                            height: "3.5rem",
-                            marginRight: "1.5rem",
+                                width: "3.5rem",
+                                height: "3.5rem",
+                                marginRight: "1.5rem",
                             }}
                             />
                             <div>
@@ -418,9 +402,9 @@ function Home(){
                             src="/add-fund.png"
                             alt="Add fund"
                             style={{
-                            width: "3.5rem",
-                            height: "3.5rem",
-                            marginRight: "1.5rem",
+                                width: "3.5rem",
+                                height: "3.5rem",
+                                marginRight: "1.5rem",
                             }}
                             />
                             <div>
@@ -437,9 +421,9 @@ function Home(){
                             src="/trading-user.png"
                             alt="Start trading"
                             style={{
-                            width: "3.5rem",
-                            height: "3.5rem",
-                            marginRight: "1.5rem",
+                                width: "3.5rem",
+                                height: "3.5rem",
+                                marginRight: "1.5rem",
                             }}
                             />
                             <div>

@@ -5,7 +5,6 @@ import Divider from '@mui/material/Divider';
 import aboutImg from "/public/about-img.jpg"
 import aboutCoins from "/public/about-coins.jpg"
 import { stats } from '../data/data';
-import { border } from '@chakra-ui/react';
 
 function About() {
   return (
@@ -69,7 +68,7 @@ function About() {
 
         </Box>
       </Box>
-                {/* {{xs: "", md: ""}} */}
+
       <Box
         sx={{
           backgroundColor: "#F5F5F5",
@@ -82,11 +81,16 @@ function About() {
             textAlign= "center">
             <Typography
               variant= "h3"
-              fontSize={{xs: "2rem"}}>
+              sx={{
+                "@media (max-width: 600px)":{
+                  fontSize: "2rem"
+                }
+              }}
+              
+              >
                 CryptoVortex helps customers to make right choice
             </Typography>
             <Typography
-              variant="subtitle1"
               sx={{
                 maxWidth: {xs: "100%", md: "30%"},
                 pl: {xs: "0", md: "2rem"},
@@ -134,7 +138,11 @@ function About() {
 
           <Typography
             variant="h3"
-            fontSize={{xs: "2rem"}}
+            sx={{
+                "@media (max-width: 600px)":{
+                  fontSize: "2rem"
+                }
+              }}
           > Start investing in future!
           </Typography>
 
@@ -143,6 +151,7 @@ function About() {
             lineHeight="1.7"
             pt="1rem"
             textAlign={{xs: "center", md:"left"}}
+            fontSize= {{xs: "1rem", md: "1.1rem"}}
           >
               Whether you're delving into the world of cryptocurrency for the first time or are a seasoned trader seeking enhanced tools, CryptoVortex is dedicated to meeting your needs. Join us on this exciting journey into the future of finance and discover the endless possibilities of the crypto realm.
           </Typography>
