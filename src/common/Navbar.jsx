@@ -17,7 +17,7 @@ import NightlightTwoToneIcon from '@mui/icons-material/NightlightTwoTone';
 
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
-    const [mode, setMode] = useState("light")
+    const [mode, setMode] = useState(true)
 
     const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -28,9 +28,7 @@ function Navbar() {
     };
 
     function changeMode(){
-        setMode(mode => {
-            mode === "light" ? "dark" : "light"
-        })
+        setMode(!mode)
     }
 
     return (
@@ -180,9 +178,8 @@ function Navbar() {
                     </Box>
                     
                     <Box>
-                        <IconButton onClick={()=> onClick(changeMode())}>
-                            {mode === "light" ? 
-                            <LightModeTwoToneIcon /> : <NightlightTwoToneIcon />}
+                        <IconButton onClick={()=> (changeMode())}>
+                            {mode ? <LightModeTwoToneIcon /> : <NightlightTwoToneIcon />}
                         </IconButton>
                     </Box>
 

@@ -53,21 +53,23 @@ function Home(){
             "@media (max-width: 600px)": {
             maxWidth: "xs"
             }
-        }}
-            
-            >
+        }}>
             <Box
                 sx={{
-                    backgroundImage: {xs: "none", md: `url(${homeImgLight})`},
+                    backgroundImage: `url(${homeImgLight})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    minHeight: {xs: "300", md: "550"},
+                    minHeight: 550,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
                     padding: 5,
-                    textAlign: "center"
+                    textAlign: "center",
+                    "@media (max-width: 600px)": {
+                        backgroundImage: "none",
+                        minHeight: 300,
+                        },
                 }}
                 >
                 <div
@@ -80,18 +82,16 @@ function Home(){
                     }}
                 >
                     <Typography
-                    variant="h2"
-                    sx={{
-                        fontWeight: "600",
-                        maxWidth: "lg",
-                        mb: 5,
-                        
-                        "@media (max-width: 600px)": {
-                            my: "1.5rem",
-                            fontSize: "2.5rem"
-                        },
-                    }}
-                    >
+                        variant="h2"
+                        sx={{
+                            fontWeight: "600",
+                            maxWidth: "lg",
+                            mb: 5,
+                            "@media (max-width: 600px)": {
+                                my: "1.5rem",
+                                fontSize: "2.5rem"
+                            },
+                        }}>
                     Dive into the CryptoVortex:
                     <br />
                     A Whirlwind of Trading Opportunities
