@@ -11,6 +11,8 @@ import Home from "./components/Home"
 import Explore from "./components/Explore"
 import News from "./components/News"
 import About from "./components/About"
+
+
 const allRoutes = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />

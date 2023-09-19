@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,11 +10,14 @@ import MenuSharpIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { Avatar } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
 import logoImg from '/public/logo.png'
+import LightModeTwoToneIcon from '@mui/icons-material/LightModeTwoTone';
+import NightlightTwoToneIcon from '@mui/icons-material/NightlightTwoTone';
 
 function Navbar() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [mode, setMode] = useState("light")
 
     const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -23,6 +26,12 @@ function Navbar() {
     const handleCloseNavMenu = () => {
     setAnchorElNav(null);
     };
+
+    function changeMode(){
+        setMode(mode => {
+            mode === "light" ? "dark" : "light"
+        })
+    }
 
     return (
         <AppBar position="static" elevation={0}>
@@ -169,6 +178,14 @@ function Navbar() {
                             </MenuItem>
                         </NavLink>
                     </Box>
+                    
+                    <Box>
+                        <IconButton onClick={()=> onClick(changeMode())}>
+                            {mode === "light" ? 
+                            <LightModeTwoToneIcon /> : <NightlightTwoToneIcon />}
+                        </IconButton>
+                    </Box>
+
                     <Box sx={{display: {xs: "none", md:"block"}}} >
                         <Button variant='text' sx={{color:'black', paddingRight: 2}}>Sign in</Button>
                         <Button variant='contained'
