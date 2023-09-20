@@ -5,6 +5,12 @@ const customFonts = {
     lato: "'Lato', 'Roboto', sans-serif"
 }
 
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
+
 const Theme = createTheme({
     typography: {
         "fontFamily": customFonts.lato,
@@ -34,10 +40,4 @@ const Theme = createTheme({
     },
 })
 
-export default Theme
-
-// xs, extra-small: 0px
-// sm, small: 600px
-// md, medium: 900px
-// lg, large: 1200px
-// xl, extra-large: 1536px
+export {Theme, darkTheme}
